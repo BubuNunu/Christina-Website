@@ -63,7 +63,7 @@ const Home = () => (
                   }}
                 />
               </Box>
-              <Typography variant="h4" component="h2" sx={{ mt: '30px', fontWeight: 700, transition: 'color 0.2s' }}>
+              <Typography variant="h4" component="h2" sx={{ mt: '30px', fontWeight: 700, lineHeight: '32px', color: colors.bodyStrong, transition: 'color 0.2s' }}>
                 {project.title}
               </Typography>
               <Typography sx={{ mt: 1, color: colors.bodyStrong }}>{project.summary}</Typography>

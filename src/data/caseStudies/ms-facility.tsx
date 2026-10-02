@@ -1,9 +1,79 @@
 import { Box, Typography } from "@mui/material";
-import type { CaseStudyContent } from "@/components/caseStudy/types";
+import type { ReactNode } from "react";
+import type {
+  CaseStudyBlock,
+  CaseStudyContent,
+  Stat,
+} from "@/components/caseStudy/types";
+import { Stats } from "@/components/caseStudy/CaseStudyBlocks";
 import PageContainer from "@/components/PageContainer";
 import { colors } from "@/theme";
 
-// Figma 2:2193: who benefits and how, as label → outcome rows.
+const link = (href: string, children: ReactNode) => (
+  <Box
+    component="a"
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    sx={{ color: colors.text }}
+  >
+    {children}
+  </Box>
+);
+
+// This page's stat labels are Manrope Regular 20 in Figma (the kit renders
+// SemiBold); "\n" in a label is a Figma line break.
+const statsRow = (items: Stat[]): CaseStudyBlock => ({
+  kind: "custom",
+  content: (
+    <Box
+      sx={{
+        "& .MuiTypography-root + .MuiTypography-root": {
+          fontWeight: 400,
+          whiteSpace: "pre-line",
+        },
+      }}
+    >
+      <Stats items={items} />
+    </Box>
+  ),
+});
+
+// Figma 2:2137: purple banner (#5a5fce, radius 24, 1280x213) with a real-text
+// "Main Title" (Manrope SemiBold 40, line-height 100%, letter-spacing -1%).
+const TitleBanner = () => (
+  <PageContainer sx={{ py: { xs: 2, md: 3 } }}>
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: { xs: 140, md: 213 },
+        px: { xs: 3, md: "144px" },
+        py: 4,
+        borderRadius: "24px",
+        bgcolor: "#5a5fce",
+      }}
+    >
+      <Typography
+        component="h2"
+        sx={{
+          fontSize: { xs: 28, md: 40 },
+          fontWeight: 600,
+          lineHeight: 1,
+          letterSpacing: "-0.01em",
+          textAlign: "center",
+        }}
+      >
+        Think Bigger: MS Ops Ecosystem
+      </Typography>
+    </Box>
+  </PageContainer>
+);
+
+// Figma 2:2193: who benefits and how, as label → outcome rows on a #28272a
+// card (radius 24). Labels Manrope Bold 24 white, outcomes Light 20 white,
+// 100px white 2px arrows between them.
 const impactRows: [string, string][] = [
   [
     "Employees",
@@ -16,15 +86,40 @@ const impactRows: [string, string][] = [
   ],
 ];
 
+const Arrow = () => (
+  <Box
+    component="svg"
+    aria-hidden
+    viewBox="0 0 100 14"
+    sx={{
+      display: { xs: "none", md: "block" },
+      width: 100,
+      height: 14,
+      flexShrink: 0,
+      mr: "53px",
+      overflow: "visible",
+    }}
+  >
+    <path
+      d="M0 7H99M92 1L99 7L92 13"
+      fill="none"
+      stroke={colors.text}
+      strokeWidth={2}
+    />
+  </Box>
+);
+
 const ImpactRows = () => (
-  <PageContainer>
+  <PageContainer sx={{ py: { xs: 2, md: 3 } }}>
     <Box
       sx={{
         display: "flex",
         flexDirection: "column",
         gap: { xs: 4, md: "80px" },
-        py: { xs: 2, md: "87px" },
-        px: { md: "64px" },
+        py: { xs: 4, md: "87px" },
+        px: { xs: 3, md: "64px" },
+        borderRadius: "24px",
+        bgcolor: "#28272a",
       }}
     >
       {impactRows.map(([who, what], i) => (
@@ -41,30 +136,21 @@ const ImpactRows = () => (
             sx={{
               width: { md: 260 },
               flexShrink: 0,
-              fontSize: 20,
-              fontWeight: 600,
+              fontSize: { xs: 20, md: 24 },
+              fontWeight: 700,
               lineHeight: "normal",
             }}
           >
             {who}
           </Typography>
-          <Box
-            aria-hidden
-            sx={{
-              display: { xs: "none", md: "block" },
-              width: 100,
-              height: "1px",
-              bgcolor: colors.body,
-              mr: "53px",
-              flexShrink: 0,
-            }}
-          />
+          <Arrow />
           <Typography
             sx={{
               maxWidth: 588,
-              fontSize: 16,
+              fontSize: { xs: 18, md: 20 },
+              fontWeight: 300,
               lineHeight: "normal",
-              color: colors.body,
+              color: colors.text,
             }}
           >
             {what}
@@ -85,18 +171,24 @@ const msFacility: CaseStudyContent = {
     {
       kind: "section",
       eyebrow: "Introduction",
-      title: "What is the Microsoft Global Facilities Platform?",
+      title: "What is the Microsoft  Global Facilities Platform?",
       body: (
-        <p>
-          The Global Facilities Platform is a centralized platform that plays a
-          critical role in supporting workplace and facilities operations at
-          Microsoft. It serves as the primary entry point for employees and
-          facility teams to request, manage and fulfill a wide range of services
-          across Microsoft’s global campuses. It’s a 15-year-old website, the
-          platform has supported over 1.7 million facility-related requests
-          worldwide and supports operations across 100+ countries, making it one
-          of the most heavily used operational systems within organization.
-        </p>
+        <>
+          <p>
+            The Global Facilities Platform is a centralized platform that plays
+            a critical role in supporting workplace and facilities operations at
+            Microsoft. It serves as the primary entry point for employees and
+            facility teams to request, manage and fulfill a wide range of
+            services across Microsoft’s global campuses.
+          </p>
+          <p>
+            It’s a 15-year-old website, the platform has supported over{" "}
+            <strong>1.7 million facility-related requests worldwide</strong> and
+            supports operations <strong>across 100+ countries,</strong> making
+            it one of the most heavily used operational systems within
+            organization.
+          </p>
+        </>
       ),
     },
     {
@@ -107,47 +199,64 @@ const msFacility: CaseStudyContent = {
     {
       kind: "section",
       eyebrow: "Problem discovery",
-      title: "Turning Pain Points into AI Opportunities",
+      title: (
+        <>
+          Turning Pain Points into <br />
+          AI Opportunities
+        </>
+      ),
       body: (
-        <p>
-          The data revealed recurring issues that caused delays, confusion, and
-          rework, directly increasing operational costs. Facilities teams spent
-          thousands of hours manually reviewing and correcting misclassified
-          requests. This uncovered a clear opportunity: modernize the
-          15-year-old Facilities Portal with AI, making it easier for employees
-          to submit accurate requests while reducing manual work for facilities
-          teams. My AI vision ideas also fasten the process, AI helps analyze
-          description ad images.
-        </p>
+        <>
+          <p>
+            The data revealed recurring issues that caused delays, confusion,
+            and rework, directly increasing operational costs. Facilities teams
+            spent thousands of hours manually reviewing and correcting
+            misclassified requests.
+          </p>
+          <p>
+            This uncovered a clear opportunity: modernize the 15-year-old
+            Facilities Portal with AI, making it easier for employees to submit
+            accurate requests while reducing manual work for facilities teams.
+            My AI vision ideas also fasten the process, AI helps analyze
+            description ad images.
+          </p>
+        </>
       ),
     },
-    {
-      kind: "stats",
-      items: [
-        { value: "~275K", label: "Work orders per year" },
-        { value: "50%", label: "of facility request filled by facility staff" },
-        {
-          value: "25%",
-          label: "of requests misclassified and need manual correction",
-        },
-        { value: "10%", label: "of requests are inactionable" },
-      ],
-    },
+    statsRow([
+      { value: "~275K", label: "Work orders per year" },
+      { value: "50%", label: "of facility request filled by facility staff" },
+      {
+        value: "25%",
+        label: "of requests misclassified and need manual correction",
+      },
+      { value: "10%", label: "of requests are inactionable" },
+    ]),
     {
       kind: "section",
       eyebrow: "Solution",
-      title: "I led 2 designers and came up with 2 solutions",
+      title: (
+        <>
+          I led 2 designers and <br />
+          came up with 2 solutions
+        </>
+      ),
       body: (
-        <p>
-          I led 2 designers from problem analysis and pain-point identification
-          through AI ideation and validation. Building on insights from my
-          earlier vision work, we explored image-based ticket creation and
-          AI-powered category pre-filling to simplify the facilities request
-          experience. We developed 2 design directions and validated them
-          through usability testing and SUS surveys. Users strongly preferred
-          Option 2, which reduced the experience from 5 steps to 2,
-          significantly simplifying the end-to-end process.
-        </p>
+        <>
+          <p>
+            I led 2 designers from problem analysis and pain-point
+            identification through AI ideation and validation. Building on
+            insights from my earlier vision work, we explored image-based ticket
+            creation and AI-powered category pre-filling to simplify the
+            facilities request experience.
+          </p>
+          <p>
+            We developed 2 design directions and validated them through
+            usability testing and SUS surveys. Users strongly preferred Option
+            2, which reduced the experience from 5 steps to 2, significantly
+            simplifying the end-to-end process.
+          </p>
+        </>
       ),
     },
     {
@@ -160,16 +269,21 @@ const msFacility: CaseStudyContent = {
       eyebrow: "Solution",
       title: "Design prototype",
       body: (
-        <p>
-          I led 2 designers from problem analysis and pain-point identification
-          through AI ideation and validation. Building on insights from my
-          earlier vision work, we explored image-based ticket creation and
-          AI-powered category pre-filling to simplify the facilities request
-          experience. We developed 2 design directions and validated them
-          through usability testing and SUS surveys. Users strongly preferred
-          Option 2, which reduced the experience from 5 steps to 2,
-          significantly simplifying the end-to-end process.
-        </p>
+        <>
+          <p>
+            I led 2 designers from problem analysis and pain-point
+            identification through AI ideation and validation. Building on
+            insights from my earlier vision work, we explored image-based ticket
+            creation and AI-powered category pre-filling to simplify the
+            facilities request experience.
+          </p>
+          <p>
+            We developed 2 design directions and validated them through
+            usability testing and SUS surveys. Users strongly preferred Option
+            2, which reduced the experience from 5 steps to 2, significantly
+            simplifying the end-to-end process.
+          </p>
+        </>
       ),
     },
     // TODO(figma 2:2123, 1280x849): "MS facility portal 2.0 demo" prototype — no matching picture/video in the Drive folder yet.
@@ -178,14 +292,19 @@ const msFacility: CaseStudyContent = {
       eyebrow: "Outcome",
       title: "Result & impact",
       body: (
-        <p>
-          We transformed a 15-year-old, taxonomy-heavy Facilities Portal into an
-          AI-first experience with natural-language input and AI-assisted
-          classification. The redesign reduced requests from 5 steps to 2,
-          lowered misclassification and manual rework, and is projected to save
-          16,400+ hours annually. Today, the experience supports facilities
-          operations across 100+ countries and 540+ buildings.
-        </p>
+        <>
+          <p>
+            We transformed a 15-year-old, taxonomy-heavy Facilities Portal into
+            an AI-first experience with natural-language input and AI-assisted
+            classification. The redesign reduced requests from 5 steps to 2,
+            lowered misclassification and manual rework, and is projected to
+            save 16,400+ hours annually.
+          </p>
+          <p>
+            Today, the experience supports facilities operations across 100+
+            countries and 540+ buildings.
+          </p>
+        </>
       ),
     },
     {
@@ -193,43 +312,55 @@ const msFacility: CaseStudyContent = {
       src: "images/ms-facility/validate-after-launch.webp",
       alt: "Validation after launch on 4/11/2026: the old portal scored SUS 55, while MS Facility Portal 2.0 scored SUS 92",
     },
-    {
-      kind: "stats",
-      items: [
-        { value: "SUS 55 → 92", label: "Ai powered and improved experiences" },
-        { value: "50%", label: "fewer clicks, shorten steps from 5 to 2" },
-        { value: "25%", label: "fewer submission errors & misclassifications" },
-        { value: "16,400+", label: "estimated hours saved annually" },
-      ],
-    },
-    // TODO(figma 2:2137, 1280x213): title banner between the Portal 2.0 story and the MS Ops ecosystem story — not in the Drive folder.
+    statsRow([
+      { value: "SUS 55 → 92", label: "Ai powered and improved experiences" },
+      { value: "50%", label: "fewer clicks, shorten steps from 5 to 2" },
+      {
+        value: "25%",
+        label: "fewer submission\nerrors & misclassifications",
+      },
+      { value: "16,400+", label: "estimated hours saved annually" },
+    ]),
+    { kind: "custom", content: <TitleBanner /> },
     {
       kind: "section",
       eyebrow: "Introduction",
-      title: "Why expand to MS Ops ecosystem?",
+      title: (
+        <>
+          Why expand to <br />
+          MS Ops ecosystem?
+        </>
+      ),
       body: (
-        <p>
-          While redesigning the facilities request flow, I discovered a much
-          larger challenge behind the scenes: facility managers relied on 90+
-          disconnected dashboards to manage work orders, alarms, faults, air
-          quality, and building health. At Microsoft’s scale—600+ buildings,
-          30K+ assets, and 2M+ data points—this fragmentation created
-          significant operational complexity. My AI vision explored both
-          employee-facing and back-end operations. After gaining leadership
-          support, the vision expanded into an AI-powered building operations
-          platform, bringing fragmented workflows and data into one experience.
-        </p>
+        <>
+          <p>
+            While redesigning the facilities request flow, I discovered a much
+            larger challenge behind the scenes:{" "}
+            <strong>
+              facility managers relied on 90+ disconnected dashboards to manage
+              work orders, alarms, faults, air quality, and building health.
+            </strong>
+          </p>
+          <p>
+            At Microsoft’s scale—600+ buildings, 30K+ assets, and 2M+ data
+            points—this fragmentation created significant operational
+            complexity.
+          </p>
+          <p>
+            My AI vision explored both employee-facing and back-end operations.
+            After gaining leadership support, the vision expanded into an
+            AI-powered building operations platform, bringing fragmented
+            workflows and data into one experience.
+          </p>
+        </>
       ),
     },
-    {
-      kind: "stats",
-      items: [
-        { value: "~2M", label: "Data points" },
-        { value: "600+", label: "MS buildings" },
-        { value: "30K", label: "Devices & equipment" },
-        { value: "90+", label: "Disconnected dashboard" },
-      ],
-    },
+    statsRow([
+      { value: "~2M", label: "Data points" },
+      { value: "600+", label: "MS buildings" },
+      { value: "30K", label: "Devices & equipment" },
+      { value: "90+", label: "Disconnected dashboard" },
+    ]),
     {
       kind: "figure",
       src: "images/ms-facility/fragmented-tools.webp",
@@ -240,15 +371,22 @@ const msFacility: CaseStudyContent = {
       eyebrow: "Solution",
       title: "Learning a Complex Domain Through Users",
       body: (
-        <p>
-          I co-led this project with another designer, starting with user
-          interviews and journey mapping to understand the complex facilities
-          operations space. As a new domain for me, talking directly with
-          facility managers helped us quickly uncover their real needs. The key
-          insight was clear: users didn’t need another dashboard—they needed one
-          unified experience that brought fragmented tools together, with AI
-          helping them identify issues and take action faster.
-        </p>
+        <>
+          <p>
+            I co-led this project with another designer, starting with user
+            interviews and journey mapping to understand the complex facilities
+            operations space. As a new domain for me, talking directly with
+            facility managers helped us quickly uncover their real needs.
+          </p>
+          <p>
+            The key insight was clear: users didn’t need another dashboard—
+            <strong>
+              they needed one unified experience that brought fragmented tools
+              together, with AI helping them identify issues and take action
+              faster.
+            </strong>
+          </p>
+        </>
       ),
     },
     {
@@ -261,16 +399,20 @@ const msFacility: CaseStudyContent = {
       eyebrow: "Solution",
       title: "From Fragmented Tools to One Intelligent Platform",
       body: (
-        <p>
-          Facility managers relied on a fragmented mix of Power BI dashboards,
-          Excel, D365, and legacy tools. A single work order could require
-          switching between multiple systems to manage requests, furniture,
-          technicians, and assets—creating a slow and disconnected workflow. Our
-          vision was to bring these experiences into one unified, AI-powered
-          platform, personalized by role and location, so facility teams could
-          access the right information, make decisions, and take action—all in
-          one place.
-        </p>
+        <>
+          <p>
+            Facility managers relied on a fragmented mix of Power BI dashboards,
+            Excel, D365, and legacy tools. A single work order could require
+            switching between multiple systems to manage requests, furniture,
+            technicians, and assets—creating a slow and disconnected workflow.
+          </p>
+          <p>
+            Our vision was to bring these experiences into one unified,
+            AI-powered platform, personalized by role and location, so facility
+            teams could access the right information, make decisions, and take
+            action—all in one place.
+          </p>
+        </>
       ),
     },
     {
@@ -288,16 +430,30 @@ const msFacility: CaseStudyContent = {
       eyebrow: "Outcome",
       title: "Result & impact",
       body: (
-        <p>
-          Facility managers relied on a fragmented mix of Power BI dashboards,
-          Excel, D365, and legacy tools. A single work order could require
-          switching between multiple systems to manage requests, furniture,
-          technicians, and assets—creating a slow and disconnected workflow. Our
-          vision was to bring these experiences into one unified, AI-powered
-          platform, personalized by role and location, so facility teams could
-          access the right information, make decisions, and take action—all in
-          one place. We also won the Realcomm IBcon 2026 Digie Award!
-        </p>
+        <>
+          <p>
+            Facility managers relied on a fragmented mix of Power BI dashboards,
+            Excel, D365, and legacy tools. A single work order could require
+            switching between multiple systems to manage requests, furniture,
+            technicians, and assets—creating a slow and disconnected workflow.
+          </p>
+          <p>
+            Our vision was to bring these experiences into one unified,
+            AI-powered platform, personalized by role and location, so facility
+            teams could access the right information, make decisions, and take
+            action—all in one place.
+          </p>
+          <p>
+            We also won the{" "}
+            {link(
+              "https://realcomm.com/news/1224/1/realcomm-ibcon-2026-digie-award-winners-announced",
+              "Realcomm IBcon 2026 Digie Award",
+            )}
+            <Box component="span" sx={{ color: colors.text }}>
+              !
+            </Box>
+          </p>
+        </>
       ),
     },
     {
