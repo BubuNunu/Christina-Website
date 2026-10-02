@@ -103,7 +103,7 @@ const Home = () => (
         <Box
           component="img"
           src={asset('images/home/about-photo.webp')}
-          alt="Rui with her cat Kiki"
+          alt="Rui holding her cat Kiki"
           loading="lazy"
           sx={{
             width: { xs: '70%', sm: 316 },
