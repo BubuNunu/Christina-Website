@@ -1,5 +1,6 @@
-import Placeholder from './Placeholder';
+import PageContainer from '../PageContainer';
 
-const About = () => <Placeholder title="About me" />;
+// Built from the Figma "About me" frame.
+const About = () => <PageContainer>About me</PageContainer>;
 
 export default About;

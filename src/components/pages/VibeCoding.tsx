@@ -1,5 +1,6 @@
-import Placeholder from './Placeholder';
+import PageContainer from '../PageContainer';
 
-const VibeCoding = () => <Placeholder title="Vibe coding" />;
+// Built from the Figma "Vibe coding" frame.
+const VibeCoding = () => <PageContainer>Vibe coding</PageContainer>;
 
 export default VibeCoding;

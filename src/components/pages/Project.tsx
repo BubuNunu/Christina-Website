@@ -1,23 +1,29 @@
 import { useParams } from 'react-router-dom';
-import { Typography } from '@mui/material';
-import Placeholder from './Placeholder';
+import PageContainer from '../PageContainer';
 import NotFound from './NotFound';
+import { CaseStudyBlockView, CaseStudyHeader, FigureImage } from '../caseStudy/CaseStudyBlocks';
 import { getProject } from '@/data/projects';
+import { caseStudies } from '@/data/caseStudies';
 
 const Project = () => {
   const { slug } = useParams();
   const project = getProject(slug);
+  const content = slug ? caseStudies[slug] : undefined;
 
-  if (!project) {
+  if (!project || !content) {
     return <NotFound />;
   }
 
   return (
-    <Placeholder title={project.title}>
-      <Typography color="text.secondary" sx={{ mt: 2 }}>
-        {project.summary}
-      </Typography>
-    </Placeholder>
+    <>
+      <CaseStudyHeader tags={content.tags} title={project.title} summary={project.summary} />
+      <PageContainer>
+        <FigureImage src={content.hero.src} alt={content.hero.alt || project.title} radius={24} />
+      </PageContainer>
+      {content.blocks.map((block, index) => (
+        <CaseStudyBlockView key={index} block={block} />
+      ))}
+    </>
   );
 };
 
