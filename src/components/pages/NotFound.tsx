@@ -1,15 +1,18 @@
 import { Link as RouterLink } from 'react-router-dom';
 import { Link, Typography } from '@mui/material';
-import Placeholder from './Placeholder';
+import PageContainer from '../PageContainer';
 
 const NotFound = () => (
-  <Placeholder title="Page not found">
+  <PageContainer sx={{ py: 8 }}>
+    <Typography variant="h2" component="h1">
+      Page not found
+    </Typography>
     <Typography sx={{ mt: 2 }}>
       <Link component={RouterLink} to="/">
         Back to home
       </Link>
     </Typography>
-  </Placeholder>
+  </PageContainer>
 );
 
 export default NotFound;
