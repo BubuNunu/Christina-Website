@@ -2,7 +2,7 @@ import type { CaseStudyContent } from '@/components/caseStudy/types';
 
 const optimaNinja: CaseStudyContent = {
   tags: ['0→1 Products', 'solo designer'],
-  hero: { src: 'images/optima-ninja/hero.webp', alt: 'Optima Ninja company website shown on desktop and mobile' },
+  hero: { src: 'images/optima-ninja/hero.webp', alt: 'Optima Ninja company website shown on a phone and a tablet' },
   blocks: [
     {
       kind: 'section',
@@ -39,8 +39,42 @@ const optimaNinja: CaseStudyContent = {
         </p>
       ),
     },
-    // Figures for Figma nodes 2:2636, 2:2677, 2:2680, 2:2718, 2:2721, 2:2734 and 2:2743 go here
-    // (not captured: Figma MCP rate limit).
+    // Figma banners 2:2677 and 2:2718 (1280x213 title cards) have no export in the Drive folder.
+    {
+      kind: 'figure',
+      src: 'images/optima-ninja/research.webp',
+      alt: 'Local competitor research collage next to a customer journey map from interviews with 20 customers, with pain points at consulting services and viewing case studies',
+    },
+    {
+      kind: 'figure',
+      src: 'images/optima-ninja/service-menu.webp',
+      alt: 'Three versions of the service menu compared side by side, with a Hotjar heat map that informed the iterations',
+    },
+    {
+      kind: 'figure',
+      src: 'images/optima-ninja/pricing-page.webp',
+      alt: 'Three versions of the pricing page compared: plan cards, an investment estimate calculator, and a subscription pricing table',
+    },
+    {
+      kind: 'figure',
+      src: 'images/optima-ninja/pricing-final.webp',
+      alt: 'Final pricing solution: a subscription pricing table comparing Simple, Pro and Enterprise plans feature by feature',
+    },
+    {
+      kind: 'figure',
+      src: 'images/optima-ninja/case-studies-v1.webp',
+      alt: 'First version of the case studies page, a grid of project cards opening a project detail page; only 5% of users clicked it',
+    },
+    {
+      kind: 'figure',
+      src: 'images/optima-ninja/case-studies-research.webp',
+      alt: 'User research comparing three case studies layouts, Design A, B and C, with a 10-participant vote table where Design C won',
+    },
+    {
+      kind: 'figure',
+      src: 'images/optima-ninja/case-studies-final.webp',
+      alt: 'Final case studies page: first and second versions next to the final version with a side navigation and project detail view',
+    },
     {
       kind: 'section',
       eyebrow: 'More things',
@@ -54,7 +88,21 @@ const optimaNinja: CaseStudyContent = {
         </p>
       ),
     },
-    // Figures for Figma nodes 2:2761, 2:2770 and 2:2774 go here (not captured: Figma MCP rate limit).
+    {
+      kind: 'figure',
+      src: 'images/optima-ninja/design-system.webp',
+      alt: 'Optima Ninja design system overview: typography, colors, UI components, iconography, illustrations and responsive layouts',
+    },
+    {
+      kind: 'figure',
+      src: 'images/optima-ninja/client-portal.webp',
+      alt: 'Client and task management platform showing open and history support tickets with status, date, timer and actions',
+    },
+    {
+      kind: 'figure',
+      src: 'images/optima-ninja/logo-painting.webp',
+      alt: 'Fun fact: two office photos, painting the Optima Ninja logo on the wall and the team waving in front of the finished logo',
+    },
   ],
 };
 

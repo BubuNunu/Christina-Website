@@ -1,22 +1,15 @@
 import type { CaseStudyContent } from '@/components/caseStudy/types';
 
 // Content from Figma frame 2:2203 ("Azure DevOps Agents").
-// NOTE: the Figma MCP quota ran out before any screenshot could be taken, so the
-// text below comes from the cached layer metadata (paragraph breaks and bold spans
-// could not be verified) and the picture frames are not yet included. Missing
-// figures, in visual order (insert as 'figure' blocks at the marked spots):
-//   2:2216 hero (Frame 2028433987, 1441x725) - currently using the Home card image
-//   2:2271 "6 entry points" (1280x638)
-//   2:2281 "Auditing 6 entry points" + "Grouping" (1282x1316; children 2:2282, 2:2286)
-//   2:2289 "My first proposal" + "Due to tech limitation, entry points from 6 to 3" (1282x1053; children 2:2290, 2:2296)
-//   2:2313 Old child item generator / A/B test options / results (1282x1594; children 2:2314, 2:2332, 2:2338)
-//   2:2344 "Old DevOps Assitant" (1282x552)
-//   2:2348 "New DevOps Assitant" (1282x552)
-//   2:2370 "Entry points from 6 to 3" (1282x461)
+// NOTE: the text comes from the cached Figma layer metadata (paragraph breaks and bold spans
+// could not be verified). Pictures are the designer's 2x exports from Google Drive (ADO-1..12).
 
 const azureDevopsAgents: CaseStudyContent = {
   tags: ['developer tool', 'AI agents'],
-  hero: { src: 'images/home/azure-devops-agents.webp', alt: 'Azure DevOps Copilot agents shown in the Azure DevOps web app' },
+  hero: {
+    src: 'images/azure-devops-agents/ado-1.webp',
+    alt: 'Azure DevOps work item page in a browser with the AI work item assistant menu open, offering child item generator, work item editor and work item insights',
+  },
   blocks: [
     {
       kind: 'section',
@@ -48,13 +41,17 @@ const azureDevopsAgents: CaseStudyContent = {
             experience more intuitive and consistent.
           </p>
           <p>
-            How might we simplify 6 fragmented entry points and create a more intuitive, scalable Copilot experience
-            for both internal and external Azure DevOps users?
+            How might we simplify 6 fragmented entry points and create a more intuitive, scalable Copilot experience for
+            both internal and external Azure DevOps users?
           </p>
         </>
       ),
     },
-    // TODO figure 2:2271 "6 entry points"
+    {
+      kind: 'figure',
+      src: 'images/azure-devops-agents/ado-2.webp',
+      alt: '6 entry points: an Azure DevOps work item page with pointers on the six places Copilot agents could be opened, from the side nav and header to the work item tabs and AI Work Item Editor',
+    },
     {
       kind: 'section',
       eyebrow: 'My approach',
@@ -68,7 +65,16 @@ const azureDevopsAgents: CaseStudyContent = {
         </p>
       ),
     },
-    // TODO figure 2:2281 "Auditing 6 entry points" + "Grouping"
+    {
+      kind: 'figure',
+      src: 'images/azure-devops-agents/ado-3.webp',
+      alt: 'Auditing 6 entry points: an audit board of screenshots documenting each agent entry point and its flows',
+    },
+    {
+      kind: 'figure',
+      src: 'images/azure-devops-agents/ado-4.webp',
+      alt: 'Grouping diagram: DevOps assistant, board insights, work item editor, work item generator, work item insight and child item generator mapped to platform, board and work item levels, then grouped into chat-based (DevOps Assistant) and action-based (Work item Assistant) agents',
+    },
     {
       kind: 'section',
       eyebrow: 'Solution',
@@ -87,7 +93,16 @@ const azureDevopsAgents: CaseStudyContent = {
         </>
       ),
     },
-    // TODO figure 2:2289 "My first proposal" + "Due to tech limitation, entry points from 6 to 3"
+    {
+      kind: 'figure',
+      src: 'images/azure-devops-agents/ado-5.webp',
+      alt: 'My first proposal: two entry points, one at the work item level and one at the board level',
+    },
+    {
+      kind: 'figure',
+      src: 'images/azure-devops-agents/ado-6.webp',
+      alt: 'Due to tech limitation, entry points from 6 to 3: platform level, board level and work item level',
+    },
     {
       kind: 'section',
       eyebrow: 'Validation',
@@ -107,7 +122,21 @@ const azureDevopsAgents: CaseStudyContent = {
         </>
       ),
     },
-    // TODO figure 2:2313 old child item generator, A/B test options, results
+    {
+      kind: 'figure',
+      src: 'images/azure-devops-agents/ado-7.webp',
+      alt: 'Old child item generator issues: tab used as an action, unclear hover and click, and unclear open and save',
+    },
+    {
+      kind: 'figure',
+      src: 'images/azure-devops-agents/ado-8.webp',
+      alt: 'Design proposal A/B testing: option A with a side-by-side preview and option B with a pop-up window preview',
+    },
+    {
+      kind: 'figure',
+      src: 'images/azure-devops-agents/ado-9.webp',
+      alt: 'A/B test results: 66% of users prefer option A, the side-by-side preview, and 90% think it improves on the old design, shown with the research notes and the final child item generator',
+    },
     {
       kind: 'section',
       eyebrow: 'Chat-based agent',
@@ -128,8 +157,16 @@ const azureDevopsAgents: CaseStudyContent = {
         </>
       ),
     },
-    // TODO figure 2:2344 "Old DevOps Assitant"
-    // TODO figure 2:2348 "New DevOps Assitant"
+    {
+      kind: 'figure',
+      src: 'images/azure-devops-agents/ado-10.webp',
+      alt: 'Old DevOps Assistant: a small pop-up chat window, with issues listed: interaction limitations, outdated Copilot style, weak starter prompts and poor discoverability',
+    },
+    {
+      kind: 'figure',
+      src: 'images/azure-devops-agents/ado-11.webp',
+      alt: 'New DevOps Assistant: a full-size chat opened from the side nav, in the Copilot Bebop style with starter prompts, saved prompts and chat history',
+    },
     {
       kind: 'section',
       eyebrow: 'Outcome',
@@ -160,7 +197,11 @@ const azureDevopsAgents: CaseStudyContent = {
         { value: '47K', label: 'Estimated hours saved' },
       ],
     },
-    // TODO figure 2:2370 "Entry points from 6 to 3"
+    {
+      kind: 'figure',
+      src: 'images/azure-devops-agents/ado-12.webp',
+      alt: 'Entry points from 6 to 3: the final platform-level, board-level and work-item-level entry points',
+    },
   ],
 };
 

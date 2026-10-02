@@ -78,8 +78,8 @@ const ImpactRows = () => (
 const msFacility: CaseStudyContent = {
   tags: ["Design lead", "System + operational thinking"],
   hero: {
-    src: "images/home/ms-facility.webp",
-    alt: "MS Facility Portal 2.0 shown on a laptop: an AI-powered facilities request experience",
+    src: "images/ms-facility/hero.webp",
+    alt: "Building Orchestrator dashboard on a laptop: East Campus fault overview with KPI cards, an assets-with-faults bar chart and a Copilot insights panel",
   },
   blocks: [
     {
@@ -98,6 +98,11 @@ const msFacility: CaseStudyContent = {
           of the most heavily used operational systems within organization.
         </p>
       ),
+    },
+    {
+      kind: "figure",
+      src: "images/ms-facility/old-portal.webp",
+      alt: "The legacy RE&F Global Facilities Service Center request page: a long \"How can we help you?\" form asking for building, room number, room type, problem class and problem type",
     },
     {
       kind: "section",
@@ -146,6 +151,11 @@ const msFacility: CaseStudyContent = {
       ),
     },
     {
+      kind: "figure",
+      src: "images/ms-facility/sus-validation.webp",
+      alt: "SUS survey validation comparing three designs: the current MS Facilities site (average SUS 55), Option 1 Stepper (SUS 80) and the preferred Option 2 All-in-One (SUS 85)",
+    },
+    {
       kind: "section",
       eyebrow: "Solution",
       title: "Design prototype",
@@ -162,6 +172,7 @@ const msFacility: CaseStudyContent = {
         </p>
       ),
     },
+    // TODO(figma 2:2123, 1280x849): "MS facility portal 2.0 demo" prototype — no matching picture/video in the Drive folder yet.
     {
       kind: "section",
       eyebrow: "Outcome",
@@ -178,6 +189,11 @@ const msFacility: CaseStudyContent = {
       ),
     },
     {
+      kind: "figure",
+      src: "images/ms-facility/validate-after-launch.webp",
+      alt: "Validation after launch on 4/11/2026: the old portal scored SUS 55, while MS Facility Portal 2.0 scored SUS 92",
+    },
+    {
       kind: "stats",
       items: [
         { value: "SUS 55 → 92", label: "Ai powered and improved experiences" },
@@ -186,6 +202,7 @@ const msFacility: CaseStudyContent = {
         { value: "16,400+", label: "estimated hours saved annually" },
       ],
     },
+    // TODO(figma 2:2137, 1280x213): title banner between the Portal 2.0 story and the MS Ops ecosystem story — not in the Drive folder.
     {
       kind: "section",
       eyebrow: "Introduction",
@@ -214,6 +231,11 @@ const msFacility: CaseStudyContent = {
       ],
     },
     {
+      kind: "figure",
+      src: "images/ms-facility/fragmented-tools.webp",
+      alt: "Today's fragmented tooling: a spreadsheet listing dozens of Power BI dashboards, a grid of separate dashboard screens, and a work-order journey map from request through completion",
+    },
+    {
       kind: "section",
       eyebrow: "Solution",
       title: "Learning a Complex Domain Through Users",
@@ -228,6 +250,11 @@ const msFacility: CaseStudyContent = {
           helping them identify issues and take action faster.
         </p>
       ),
+    },
+    {
+      kind: "figure",
+      src: "images/ms-facility/user-research.webp",
+      alt: "We talked to 16 facility managers: workshop whiteboards above a journey map of phases (alarm received, self resolution, issue investigation, vendor support, fix and validate) with goals, data points, touchpoints and emotions",
     },
     {
       kind: "section",
@@ -247,6 +274,16 @@ const msFacility: CaseStudyContent = {
       ),
     },
     {
+      kind: "figure",
+      src: "images/ms-facility/design-exploration.webp",
+      alt: "My design exploration: a grid of eight early dashboard concepts with charts, tables and KPI cards",
+    },
+    {
+      kind: "figure",
+      src: "images/ms-facility/figma-make-prototype.webp",
+      alt: "Figma Make prototype of the Building Orchestrator facilities management dashboard with fault KPIs and an assets-with-a-fault bar chart",
+    },
+    {
       kind: "section",
       eyebrow: "Outcome",
       title: "Result & impact",
@@ -262,6 +299,11 @@ const msFacility: CaseStudyContent = {
           one place. We also won the Realcomm IBcon 2026 Digie Award!
         </p>
       ),
+    },
+    {
+      kind: "figure",
+      src: "images/ms-facility/unified-platform.webp",
+      alt: "90+ disconnected dashboards become one unified, role- and location-based platform: the Building Orchestrator dashboard surrounded by bubbles for alarms, assets, faults, air quality, energy, water, devices and more",
     },
     { kind: "custom", content: <ImpactRows /> },
   ],
