@@ -35,16 +35,35 @@ const blocks: CaseStudyBlock[] = [
           smarter use of physical spaces.
         </p>
         <p>
-          I was one of the 2 designers that started this project in 2022, as the product grew, I became the Mobile
-          Design Lead, helping scale the team to 5 designers across 9 teams and leading the mobile experience from early
+          I was one of the 2 designers that started this project in 2022, as the product grew, I became the{' '}
+          <strong>Mobile Design Lead</strong>, helping scale the team to 5 designers across 9 teams and leading the mobile experience from early
           exploration through launch and enterprise adoption 0 &gt; 1. I also worked on 10+ coordinate features &amp;
           design systems, make sure mobile &amp; web alignment.
         </p>
         <p>
           MS Places rolled out to 228K Microsoft employees and millions of enterprise users globally. Within the first
-          three months of launch, it reached 5.7M monthly active users, 2.54M weekly active users, and 1,500+
-          enterprise customers, with approximately 30% engagement and retention. The launch also generated nearly 50
-          media stories worldwide, including coverage from Computerworld, The Verge, and PCWorld.
+          three months of launch, it reached{' '}
+          <strong>
+            5.7M monthly active users, 2.54M weekly active users, and 1,500+ enterprise customers, with approximately
+            30% engagement and retention.
+          </strong>{' '}
+          The launch also generated nearly 50 media stories worldwide, including coverage from{' '}
+          <a
+            href="https://www.computerworld.com/article/2106130/microsoft-looks-to-ease-the-shift-to-hybrid-work-with-its-places-app.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Computerworld
+          </a>
+          ,{' '}
+          <a
+            href="https://www.theverge.com/2024/5/13/24155204/microsoft-places-ai-hybrid-office-feature"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            The Verge
+          </a>
+          , and <u style={{ fontWeight: 700 }}>PCWorld</u>.
         </p>
       </>
     ),
