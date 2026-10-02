@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { Box, Typography } from '@mui/material';
 import PageContainer from '../PageContainer';
 import { colors } from '@/theme';
@@ -51,7 +51,17 @@ const rowPhotos = [
 ];
 
 const sectionTitleSx = { fontSize: { xs: 32, md: 40 }, fontWeight: 700, lineHeight: 'normal' };
-const sectionBodySx = { mt: { xs: 2, md: '33px' }, fontSize: { xs: 18, md: 24 }, lineHeight: 'normal', color: colors.body };
+// Body 2:2808 / 2:2831: Regular 24 / normal, white@0.8, bold spans white. A blank
+// line in Figma separates the paragraphs (one 24px line, about 33px).
+const sectionBodySx = {
+  mt: { xs: 2, md: '33px' },
+  fontSize: { xs: 18, md: 24 },
+  lineHeight: 'normal',
+  color: colors.body,
+  '& p': { m: 0 },
+  '& p + p': { mt: { xs: '1.366em', md: '33px' } },
+  '& strong': { color: colors.text, fontWeight: 700 },
+};
 
 const TwoColumn = ({
   picture,
@@ -60,7 +70,7 @@ const TwoColumn = ({
 }: {
   picture: PhotoProps;
   title: string;
-  body: string;
+  body: ReactNode;
 }) => (
   <PageContainer sx={{ pt: { xs: 7, md: '120px' } }}>
     <Box
@@ -79,7 +89,9 @@ const TwoColumn = ({
         <Typography component="h2" sx={sectionTitleSx}>
           {title}
         </Typography>
-        <Typography sx={sectionBodySx}>{body}</Typography>
+        <Typography component="div" sx={sectionBodySx}>
+          {body}
+        </Typography>
       </Box>
     </Box>
   </PageContainer>
@@ -126,11 +138,12 @@ const About = () => (
           maxWidth: 1136,
           fontSize: { xs: 24, sm: 32, md: 40 },
           fontWeight: 500,
+          '& strong': { fontWeight: 700 },
           lineHeight: 'normal',
           color: colors.bodyStrong,
         }}
       >
-        Hi 👋! I’m Rui — a product designer turning complex problems into scalable experiences, from AI products at
+        <strong>Hi 👋!</strong> I’m Rui — a product designer turning complex problems into scalable experiences, from AI products at
         Microsoft to design systems at WM and 0→1 products at Optima Ninja.
       </Typography>
     </PageContainer>
@@ -157,7 +170,19 @@ const About = () => (
     <TwoColumn
       picture={{ src: 'images/about/at-work.webp', alt: 'Collage of Rui with colleagues: a team painting event, a group photo at a design conference, signing a conference message wall, and a summer team outing', width: 492, height: 427 }}
       title="At Work"
-      body="I’m passionate about turning complex problems into simple, thoughtful experiences. I love talking with users, uncovering the “why” behind their needs, and using systems thinking to design solutions that scale. I’m also curious about new ways of building—using AI and vibe coding to quickly turn ideas into prototypes and learn through making. Based in Redmond, WA, designing at the intersection of people, systems, and AI."
+      body={
+        <>
+          <p>
+            I’m passionate about <strong>turning complex problems into simple, thoughtful experiences.</strong> I love
+            talking with users, uncovering the “why” behind their needs, and using systems thinking to design solutions
+            that scale. I’m also curious about new ways of building—using AI and vibe coding to quickly turn ideas into
+            prototypes and learn through making.
+          </p>
+          <p>
+            Based in <strong>Redmond, WA</strong>, designing at the intersection of people, systems, and AI.
+          </p>
+        </>
+      }
     />
     <TwoColumn
       picture={{
@@ -167,7 +192,23 @@ const About = () => (
         height: 426,
       }}
       title="Outside of work"
-      body="Outside of work, I’m usually volunteering, exploring, or making something. You’ll find me helping at Animal shelters, Asian & women’s communities, hiking in nature, forging mushrooms in forest, finding clams on the beach, walking my cat, cooking yummy food, working on DIY projects, taking photos, and simply having fun along the way."
+      body={
+        <>
+          <p>
+            Outside of work, I’m usually{' '}
+            <strong>
+              volunteering, exploring, <Box component="br" sx={{ display: { xs: 'none', md: 'inline' } }} />
+              or making
+            </strong>{' '}
+            something.
+          </p>
+          <p>
+            You’ll find me helping at Animal shelters, Asian &amp; women’s communities, hiking in nature, forging mushrooms
+            in forest, finding clams on the beach, walking my cat, cooking yummy food, working on DIY projects, taking
+            photos, and simply having fun along the way.
+          </p>
+        </>
+      }
     />
 
     {/* My experiences 2:2839 */}
@@ -190,13 +231,13 @@ const About = () => (
               borderBottom: index === experiences.length - 1 ? 'none' : `1px solid ${colors.divider}`,
             }}
           >
-            <Typography sx={{ fontSize: { xs: 18, md: 24 }, lineHeight: 'normal', color: colors.muted, mt: { md: '6px' } }}>
+            <Typography sx={{ fontSize: { xs: 18, md: 24 }, fontWeight: 600, lineHeight: 'normal', mt: { md: '6px' } }}>
               {item.dates}
             </Typography>
-            <Typography component="h3" sx={{ fontSize: 24, fontWeight: 700, lineHeight: 'normal', mt: { md: '6px' } }}>
+            <Typography component="h3" sx={{ fontSize: { xs: 18, md: 24 }, fontWeight: 600, lineHeight: 'normal', mt: { md: '6px' } }}>
               {item.company}
             </Typography>
-            <Typography sx={{ fontSize: 16, lineHeight: '22px', color: colors.body, maxWidth: { md: 415 } }}>
+            <Typography sx={{ fontSize: 16, lineHeight: 'normal', color: colors.body, maxWidth: { md: 415 } }}>
               {item.description}
             </Typography>
           </Box>
@@ -206,7 +247,7 @@ const About = () => (
 
     {/* Closing line 2:2832 */}
     <PageContainer sx={{ pt: { xs: 8, md: '120px' }, pb: { xs: 6, md: '150px' } }}>
-      <Typography variant="h2" component="p" sx={{ lineHeight: 'normal' }}>
+      <Typography variant="h2" component="p" sx={{ fontWeight: 500, lineHeight: 'normal', color: colors.bodyStrong }}>
         Don’t hesitate to drop me a message — I’m always happy to connect! 👋
       </Typography>
     </PageContainer>

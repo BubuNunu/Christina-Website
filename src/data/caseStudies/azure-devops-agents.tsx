@@ -1,8 +1,13 @@
+import { Box } from '@mui/material';
+import { Stats } from '@/components/caseStudy/CaseStudyBlocks';
 import type { CaseStudyContent } from '@/components/caseStudy/types';
 
-// Content from Figma frame 2:2203 ("Azure DevOps Agents").
-// NOTE: the text comes from the cached Figma layer metadata (paragraph breaks and bold spans
-// could not be verified). Pictures are the designer's 2x exports from Google Drive (ADO-1..12).
+// Content from Figma frame 2:2203 ("Azure DevOps Agents"); text, paragraph breaks and bold/link
+// spans match the decoded Figma text layers. Pictures are the designer's 2x exports from Google
+// Drive (ADO-1..12); captions and labels inside those frames are part of the pictures.
+
+// Bold span that keeps the body colour (Figma bolds these without turning them white).
+const boldSx = { fontWeight: 700 };
 
 const azureDevopsAgents: CaseStudyContent = {
   tags: ['developer tool', 'AI agents'],
@@ -18,13 +23,17 @@ const azureDevopsAgents: CaseStudyContent = {
       body: (
         <>
           <p>
-            Azure DevOps (ADO) is Microsoft’s end-to-end developer platform for planning, building, and shipping
+            Azure DevOps (ADO) is Microsoft’s end-to-end{' '}
+            <Box component="span" sx={boldSx}>
+              developer platform
+            </Box>{' '}
+            for planning, building, and shipping
             software, helping developers and engineering teams manage work throughout the product development life
             cycle.
           </p>
           <p>
             I led 2 designers to bring UX into Azure DevOps Copilot for the first time, simplifying 6 entry points to 3
-            and scaling the experience to 11K users, 163.5K+ work items/month, and ~47K hours saved.
+            and scaling the experience to <strong>11K users, 163.5K+ work items/month, and ~47K hours saved.</strong>
           </p>
         </>
       ),
@@ -41,8 +50,10 @@ const azureDevopsAgents: CaseStudyContent = {
             experience more intuitive and consistent.
           </p>
           <p>
-            How might we simplify 6 fragmented entry points and create a more intuitive, scalable Copilot experience for
-            both internal and external Azure DevOps users?
+            <strong>
+              How might we simplify 6 fragmented entry points and create a more intuitive, scalable Copilot experience
+              for both internal and external Azure DevOps users?
+            </strong>
           </p>
         </>
       ),
@@ -55,14 +66,25 @@ const azureDevopsAgents: CaseStudyContent = {
     {
       kind: 'section',
       eyebrow: 'My approach',
-      title: 'Auditing & Simplifying the Experience',
+      title: (
+        <>
+          Auditing & Simplifying
+          <br />
+          the Experience
+        </>
+      ),
       body: (
-        <p>
-          I started by auditing all 6 entry points—their functionality, interaction patterns, and limitations. I then
-          mapped and grouped them by interaction type and context, from platform and board level to individual work
-          items. This revealed two core patterns: Chat-based Agents for conversational assistance and Action-based
-          Agents for completing specific tasks.
-        </p>
+        <>
+          <p>
+            I started by auditing all 6 entry points—their functionality, interaction patterns, and limitations. I then
+            mapped and grouped them by interaction type and context, from platform and board level to individual work
+            items.
+          </p>
+          <p>
+            This revealed two core patterns: <strong>Chat-based Agents</strong> for conversational assistance and{' '}
+            <strong>Action-based Agents</strong> for completing specific tasks.
+          </p>
+        </>
       ),
     },
     {
@@ -115,9 +137,11 @@ const azureDevopsAgents: CaseStudyContent = {
           </p>
           <p>
             For the Child Item Generator, users struggled to preview, review, and save multiple AI-generated items. The
-            existing information architecture made generated content difficult to scan and understand. I redesigned the
-            experience to create a clearer hierarchy, easier multi-item review, and more intuitive save flow, helping
-            users confidently review AI-generated content before taking action.
+            existing information architecture made generated content difficult to scan and understand.
+          </p>
+          <p>
+            I redesigned the experience to create a clearer hierarchy, easier multi-item review, and more intuitive save
+            flow, helping users confidently review AI-generated content before taking action.
           </p>
         </>
       ),
@@ -150,9 +174,11 @@ const azureDevopsAgents: CaseStudyContent = {
           </p>
           <p>
             For the Child Item Generator, users struggled to preview, review, and save multiple AI-generated items. The
-            existing information architecture made generated content difficult to scan and understand. I redesigned the
-            experience to create a clearer hierarchy, easier multi-item review, and more intuitive save flow, helping
-            users confidently review AI-generated content before taking action.
+            existing information architecture made generated content difficult to scan and understand.
+          </p>
+          <p>
+            I redesigned the experience to create a clearer hierarchy, easier multi-item review, and more intuitive save
+            flow, helping users confidently review AI-generated content before taking action.
           </p>
         </>
       ),
@@ -184,18 +210,36 @@ const azureDevopsAgents: CaseStudyContent = {
             location, so facility teams could access the right information, make decisions, and take action—all in one
             place.
           </p>
-          <p>We also won the Realcomm IBcon 2026 Digie Award!</p>
+          <p>
+            We also won the
+            <a
+              href="https://realcomm.com/news/1224/1/realcomm-ibcon-2026-digie-award-winners-announced"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {' '}
+              Realcomm IBcon 2026 Digie Award
+            </a>
+            !
+          </p>
         </>
       ),
     },
     {
-      kind: 'stats',
-      items: [
-        { value: '1.1K+', label: 'Orgs using internally' },
-        { value: '11K +', label: 'Active users' },
-        { value: '163.5K', label: 'Items/month generated' },
-        { value: '47K', label: 'Estimated hours saved' },
-      ],
+      // Figma sets this page's stat labels in Manrope Regular 20 (the kit uses SemiBold).
+      kind: 'custom',
+      content: (
+        <Box sx={{ '& .MuiTypography-root + .MuiTypography-root': { fontWeight: 400 } }}>
+          <Stats
+            items={[
+              { value: '1.1K+', label: 'Orgs using internally' },
+              { value: '11K +', label: 'Active users' },
+              { value: '163.5K', label: 'Items/month generated' },
+              { value: '47K', label: 'Estimated hours saved' },
+            ]}
+          />
+        </Box>
+      ),
     },
     {
       kind: 'figure',
