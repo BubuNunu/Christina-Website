@@ -87,7 +87,7 @@ const VibeCoding = () => (
       media={
         <Shot
           src="images/vibe-coding/skills-collage.webp"
-          alt="Collage of images made with custom AI style skills: cartoon stickers, flat illustrations and wool-felt art"
+          alt="Collage of images made with custom AI style skills: a cozy cartoon living room with a grey cat and matching stickers, flat illustrations of modern buildings, and wool-felt fruit"
           width={492}
           height={477}
         />
@@ -104,14 +104,14 @@ const VibeCoding = () => (
     <Row
       title="Open Meow AI"
       media={
-        <Box sx={{ display: 'flex', gap: { xs: 2, md: '23px' }, maxWidth: 504 }}>
-          <Box sx={{ flex: '238 1 0', minWidth: 0 }}>
-            <Shot src="images/vibe-coding/open-meow-1.webp" alt="Open Meow AI app screen" width={238} height={461} />
-          </Box>
-          <Box sx={{ flex: '243 1 0', minWidth: 0 }}>
-            <Shot src="images/vibe-coding/open-meow-2.webp" alt="Open Meow AI app screen" width={243} height={461} />
-          </Box>
-        </Box>
+        // Figma shows two phone screens here (2:2902 and 2:2903); Drive only has one ("Open meow.png"), so the
+        // second screen is left out until it is exported.
+        <Shot
+          src="images/vibe-coding/open-meow-1.webp"
+          alt="Open Meow AI app's AI Analyzer screen, with Photo, Video and Sound tabs, a microphone button to record your cat's meow and an Analyze with AI button"
+          width={253}
+          height={471}
+        />
       }
     >
       <p>

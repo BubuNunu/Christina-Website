@@ -11,16 +11,10 @@ const keyStats: Stat[] = [
   { value: '30%', label: 'Engagement & retention' },
 ];
 
-// Figures still to capture from Figma (node id -> planned file under public/images/ms-places/):
-//   2:1666 -> intro-mockups.webp       (after intro, 1280x721)
-//   2:1614 -> problem-stats.webp       (chart row inside "What are the problems?", 1268x242)
-//   2:1781 -> workshops.webp           (after "How did I solve this?", 1280x865)
-//   2:1694 -> key-flows.webp           (after "My design", 1280x1440)
-//   2:1709 -> homepage-iteration.webp  (after "Homepage iteration", 1280x1348)
-//   2:1737 -> delivery-spec.webp, 2:1753 -> delivery-modes.webp (after "Delivery lead")
-//   2:1788 -> design-system.webp       (after "Design system", 1280x865)
-//   2:1794 -> platforms.webp           (after "Result & impact", 1280x580)
-// They are not added as blocks yet so the page has no broken images.
+// The chart row inside "What are the problems?" (Figma node 2:1614, 1268x242) is not in the
+// Drive export folder, so it is not shown yet.
+
+const img = (name: string) => `images/ms-places/${name}.webp`;
 
 const blocks: CaseStudyBlock[] = [
   {
@@ -57,6 +51,11 @@ const blocks: CaseStudyBlock[] = [
   },
   { kind: 'stats', items: keyStats },
   {
+    kind: 'figure',
+    src: img('intro-mockups'),
+    alt: 'Microsoft Places on a phone and on the web, showing the Today view for Building 4 with who is working there and upcoming meetings',
+  },
+  {
     kind: 'section',
     eyebrow: 'Introduction',
     title: 'What are the problems?',
@@ -84,6 +83,11 @@ const blocks: CaseStudyBlock[] = [
     ),
   },
   {
+    kind: 'figure',
+    src: img('workshops'),
+    alt: 'Photos of the team running workshops with sticky notes on whiteboards, above a detailed user journey map of the Places experience',
+  },
+  {
     kind: 'section',
     eyebrow: 'Solution',
     title: 'My design',
@@ -95,6 +99,11 @@ const blocks: CaseStudyBlock[] = [
         Modernize, and Optimize.
       </p>
     ),
+  },
+  {
+    kind: 'figure',
+    src: img('key-flows'),
+    alt: 'Four key mobile flows: 01 Onboarding (choosing in-person days), 02 Homepage, 03 Work plan, 04 Collaborators',
   },
   {
     kind: 'section',
@@ -118,6 +127,11 @@ const blocks: CaseStudyBlock[] = [
     ),
   },
   {
+    kind: 'figure',
+    src: img('homepage-iteration'),
+    alt: 'Mobile homepage iterations leading to the public preview, and the final homepage broken into six cards: Moments, Location, People, Service, Book room/desk and Nearby places',
+  },
+  {
     kind: 'section',
     eyebrow: 'Solution',
     title: 'Delivery lead',
@@ -139,6 +153,16 @@ const blocks: CaseStudyBlock[] = [
     ),
   },
   {
+    kind: 'figure',
+    src: img('delivery-spec'),
+    alt: 'Mobile and web alignment of the Building 4 page, next to design and accessibility spec templates',
+  },
+  {
+    kind: 'figure',
+    src: img('delivery-modes'),
+    alt: 'Dark mode and landscape mode guidelines for the mobile Today screen',
+  },
+  {
     kind: 'section',
     eyebrow: 'Solution',
     title: 'Design system',
@@ -151,6 +175,11 @@ const blocks: CaseStudyBlock[] = [
         the design process faster and more scalable.
       </p>
     ),
+  },
+  {
+    kind: 'figure',
+    src: img('design-system'),
+    alt: 'TPX Design UI Kit for mobile and web: color foundations, the mobile component library in Figma, and how Places design files build on Fluent 2',
   },
   {
     kind: 'section',
@@ -171,13 +200,20 @@ const blocks: CaseStudyBlock[] = [
       </>
     ),
   },
+  {
+    kind: 'figure',
+    src: img('platforms'),
+    alt: 'Microsoft Places across platforms: the mobile app, the website and Microsoft 365 (Outlook calendar)',
+  },
   { kind: 'stats', items: keyStats },
 ];
 
 const msPlaces: CaseStudyContent = {
   tags: ['0→1 Products', 'Mobile lead + Design system'],
-  // TODO: replace with a 2x capture of Figma node 2:1589 at images/ms-places/hero.webp.
-  hero: { src: 'images/home/ms-places.webp', alt: 'Microsoft Places mobile and web experience' },
+  hero: {
+    src: img('hero'),
+    alt: 'Outlook calendar with the Microsoft Places card showing who is in the office and suggesting a day to collaborate in person',
+  },
   blocks,
 };
 

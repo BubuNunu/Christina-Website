@@ -45,9 +45,9 @@ const Photo = ({ src, alt, width, height, radius = 20 }: PhotoProps) => {
 
 // Photo row 2:2834 (three photos side by side, 1280px total).
 const rowPhotos = [
-  { src: 'images/about/photo-1.webp', alt: 'Rui portrait', width: 423, height: 427 },
-  { src: 'images/about/photo-2.webp', alt: 'Rui at an event', width: 347, height: 427 },
-  { src: 'images/about/photo-3.webp', alt: 'Rui with friends', width: 464, height: 427 },
+  { src: 'images/about/photo-1.webp', alt: 'Rui smiling with a peace sign next to her grey cat under cherry blossoms', width: 423, height: 427 },
+  { src: 'images/about/photo-2.webp', alt: 'Rui striking a pose beside the Pikes Peak Summit marker', width: 347, height: 427 },
+  { src: 'images/about/photo-3.webp', alt: 'Rui posing in front of framed illustrations at an art exhibition', width: 464, height: 427 },
 ];
 
 const sectionTitleSx = { fontSize: { xs: 32, md: 40 }, fontWeight: 700, lineHeight: 'normal' };
@@ -155,14 +155,14 @@ const About = () => (
 
     {/* Two-column blocks 2:2804 */}
     <TwoColumn
-      picture={{ src: 'images/about/at-work.webp', alt: 'Collage of Rui at work', width: 492, height: 427 }}
+      picture={{ src: 'images/about/at-work.webp', alt: 'Collage of Rui with colleagues: a team painting event, a group photo at a design conference, signing a conference message wall, and a summer team outing', width: 492, height: 427 }}
       title="At Work"
       body="I’m passionate about turning complex problems into simple, thoughtful experiences. I love talking with users, uncovering the “why” behind their needs, and using systems thinking to design solutions that scale. I’m also curious about new ways of building—using AI and vibe coding to quickly turn ideas into prototypes and learn through making. Based in Redmond, WA, designing at the intersection of people, systems, and AI."
     />
     <TwoColumn
       picture={{
         src: 'images/about/outside-of-work.webp',
-        alt: 'Collage of Rui volunteering, hiking, foraging and with her cat',
+        alt: 'Collage of life outside work: volunteering at a cat shelter, the Asian Women Summit, walking her cat, hand-painted pet crafts, mushrooms, a frozen waterfall hike, Mount Rainier wildflowers, clamming on the beach, and her cat’s birthday',
         width: 492,
         height: 426,
       }}

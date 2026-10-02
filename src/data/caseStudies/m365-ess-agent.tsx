@@ -1,12 +1,11 @@
 import type { CaseStudyContent } from '@/components/caseStudy/types';
 
 // Figma frame 2:1799. Text copied from the Figma text layers (bold spans not verified).
-// TODO: figure blocks for 2:1852, 2:1882, 2:1922, 2:1960, 2:1999, 2:2005 and the hero (2:1834)
-// still need screenshots; the Figma MCP call limit blocked them.
+// Pictures are the designer's 2x exports of the Figma frames (ESS-1..10 in Drive).
 const m365EssAgent: CaseStudyContent = {
   tags: ['Think big', 'AI agent project'],
   hero: {
-    src: 'images/home/m365-ess-agent.webp',
+    src: 'images/m365-ess-agent/ess-1.webp',
     alt: 'Employee Self-Service Agent in Microsoft 365 Copilot shown on phone and desktop',
   },
   blocks: [
@@ -55,6 +54,11 @@ const m365EssAgent: CaseStudyContent = {
       ),
     },
     {
+      kind: 'figure',
+      src: 'images/m365-ess-agent/ess-2.webp',
+      alt: 'Chat-based to action-based: the vision concept on a phone next to the Employee Self-Service Agent in Microsoft 365 Copilot submitting a facility request from a photo',
+    },
+    {
       kind: 'section',
       eyebrow: 'Solution',
       title: 'From Insights to Design Strategy',
@@ -78,6 +82,11 @@ const m365EssAgent: CaseStudyContent = {
       ],
     },
     {
+      kind: 'figure',
+      src: 'images/m365-ess-agent/ess-3.webp',
+      alt: 'Three design principles: Productive, Personalized and Contextual, each with a How might we question',
+    },
+    {
       kind: 'section',
       eyebrow: 'Solution',
       title: 'Bringing the Vision to Life',
@@ -92,6 +101,16 @@ const m365EssAgent: CaseStudyContent = {
       ),
     },
     {
+      kind: 'figure',
+      src: 'images/m365-ess-agent/ess-4.webp',
+      alt: 'Storyboards, design screen explorations and the three vision videos: voice interaction with AI on MyHub, a front-end and back-end story, and real-time video chatting with AR wayfinding',
+    },
+    {
+      kind: 'figure',
+      src: 'images/m365-ess-agent/ess-5.webp',
+      alt: 'Vision video screens showing mobile Copilot flows for commute, dining, ticketing and AR wayfinding alongside the desktop Copilot experience',
+    },
+    {
       kind: 'section',
       eyebrow: 'Outcome',
       title: 'Result & impact',
@@ -101,6 +120,21 @@ const m365EssAgent: CaseStudyContent = {
           Facilities roadmaps and building stakeholder support to reinvest in the MyHub app with new AI capabilities.
         </p>
       ),
+    },
+    {
+      kind: 'figure',
+      src: 'images/m365-ess-agent/ess-6.webp',
+      alt: 'My ideas rolled to the ESS roadmap: before and after image-based ticket creation in the ESS Agent',
+    },
+    {
+      kind: 'figure',
+      src: 'images/m365-ess-agent/ess-7.webp',
+      alt: 'My ideas impacted the 15-year-old MS facility portal: before and after redesign of the facilities request site',
+    },
+    {
+      kind: 'figure',
+      src: 'images/m365-ess-agent/ess-8.webp',
+      alt: 'My ideas convinced leadership to re-invest in the MyHub app with AI capabilities: the old dashboard before and the new AI-powered facility request flow after',
     },
     {
       kind: 'section',
@@ -114,6 +148,16 @@ const m365EssAgent: CaseStudyContent = {
           a simple, end-to-end AI interaction.
         </p>
       ),
+    },
+    {
+      kind: 'figure',
+      src: 'images/m365-ess-agent/ess-9.webp',
+      alt: 'Facility ticket created in about 30 seconds from a photo of a thermostat, shown in Campus Copilot on mobile and the Employee Self-Service Agent on desktop',
+    },
+    {
+      kind: 'figure',
+      src: 'images/m365-ess-agent/ess-10.webp',
+      alt: 'Overview of the many design screens produced across the ESS Agent vision work',
     },
   ],
 };
