@@ -57,7 +57,7 @@ const Home = () => {
         <Typography
           sx={{
             mt: { xs: 3, md: '26px' },
-            fontSize: { xs: 22, sm: 28, md: 36 },
+            fontSize: { xs: 28, sm: 28, md: 28, lg: 28 },
             lineHeight: 'normal',
             fontWeight: 500,
             color: colors.bodyStrong,
@@ -136,7 +136,7 @@ const Home = () => {
                 <Typography variant="h4" component="h2" sx={{ mt: '30px', fontSize: { xs: 24, sm: 24, md: 24, lg: 24 }, fontWeight: 700, lineHeight: '32px', color: colors.bodyStrong, transition: 'color 0.2s' }}>
                   {project.title}
                 </Typography>
-                <Typography sx={{ mt: 1, fontSize: { xs: 18, sm: 18, md: 18, lg: 18 }, color: '#E6E6E6' }}>{project.summary}</Typography>
+                <Typography sx={{ mt: 1, fontSize: { xs: 18, sm: 18, md: 18, lg: 18 }, color: '#E6E6E6' }}>{project.cardSummary ?? project.summary}</Typography>
               </Link>
             </Grid>
           ))}
