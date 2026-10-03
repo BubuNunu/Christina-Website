@@ -1,3 +1,4 @@
+import type { SyntheticEvent } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { Box, Grid, Link, Typography } from '@mui/material';
 import PageContainer from '../PageContainer';
@@ -6,6 +7,18 @@ import { links } from '@/data/links';
 import { projects } from '@/data/projects';
 import { colors } from '@/theme';
 import { asset } from '@/utils/asset';
+
+// Cards with a hover clip play it while hovered/focused and rewind when left.
+const playHoverVideo = (event: SyntheticEvent) => {
+  void event.currentTarget.querySelector('video')?.play().catch(() => undefined);
+};
+const stopHoverVideo = (event: SyntheticEvent) => {
+  const video = event.currentTarget.querySelector('video');
+  if (video) {
+    video.pause();
+    video.currentTime = 0;
+  }
+};
 
 const Home = () => (
   <>
@@ -43,13 +56,18 @@ const Home = () => (
               to={`/projects/${project.slug}`}
               underline="none"
               color="inherit"
+              onMouseEnter={playHoverVideo}
+              onMouseLeave={stopHoverVideo}
+              onFocus={playHoverVideo}
+              onBlur={stopHoverVideo}
               sx={{
                 display: 'block',
-                '&:hover img': { transform: 'scale(1.02)' },
+                '&:hover img, &:hover video': { transform: 'scale(1.02)' },
+                '&:hover video, &:focus-visible video': { opacity: 1 },
                 '&:hover h2': { color: colors.accent },
               }}
             >
-              <Box sx={{ borderRadius: '24px', overflow: 'hidden', aspectRatio: '614 / 348' }}>
+              <Box sx={{ position: 'relative', borderRadius: '24px', overflow: 'hidden', aspectRatio: '614 / 348' }}>
                 <Box
                   component="img"
                   src={asset(project.image)}
@@ -63,6 +81,28 @@ const Home = () => (
                     transition: 'transform 0.3s ease',
                   }}
                 />
+                {project.hoverVideo && (
+                  <Box
+                    component="video"
+                    muted
+                    loop
+                    playsInline
+                    preload="none"
+                    aria-hidden
+                    sx={{
+                      position: 'absolute',
+                      inset: 0,
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      opacity: 0,
+                      transition: 'opacity 0.3s ease, transform 0.3s ease',
+                    }}
+                  >
+                    <source src={asset(`${project.hoverVideo}.webm`)} type="video/webm" />
+                    <source src={asset(`${project.hoverVideo}.mp4`)} type="video/mp4" />
+                  </Box>
+                )}
               </Box>
               <Typography variant="h4" component="h2" sx={{ mt: '30px', fontWeight: 700, lineHeight: '32px', color: colors.bodyStrong, transition: 'color 0.2s' }}>
                 {project.title}
