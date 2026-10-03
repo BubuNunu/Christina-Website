@@ -45,9 +45,12 @@ jobs:
         if: steps.check.outputs.ready == 'true'
         run: npm install --global vercel@latest
 
+      # Vercel names the project after the repo, in lowercase
       - name: Link the Vercel project
         if: steps.check.outputs.ready == 'true'
-        run: vercel link --yes --project sherry-ux-work-website --token="$VERCEL_TOKEN"
+        run: |
+          project=$(echo "${{ github.event.repository.name }}" | tr '[:upper:]' '[:lower:]')
+          vercel link --yes --project "$project" --token="$VERCEL_TOKEN"
 
       - name: Pull Vercel settings
         if: steps.check.outputs.ready == 'true'
