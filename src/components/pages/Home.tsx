@@ -49,7 +49,7 @@ const Home = () => {
     <>
       {/* Hero */}
       <PageContainer sx={{ pt: { xs: 4, md: '45px' }, pb: { xs: 6, md: '46px' } }}>
-        <Typography variant="h1" sx={{ maxWidth: 717, fontSize: { xs: 32, sm: 48, md: 60, lg: 60 }, lineHeight: 1.2 }}>
+        <Typography variant="h1" sx={{ maxWidth: 717, fontSize: { xs: 'clamp(28px, 8.5vw, 32px)', sm: 48, md: 60, lg: 60 }, lineHeight: 1.2 }}>
           Building AI products
           <br />
           from zero to scale
