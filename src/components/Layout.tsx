@@ -151,54 +151,56 @@ const Layout = () => {
         <Outlet />
       </Box>
 
-      <PageContainer component="footer" id="contact" sx={{ pt: { xs: 6, md: '44px' }, pb: { xs: 6, md: 8 } }}>
-        <Stack
-          direction={{ xs: 'column', md: 'row' }}
-          justifyContent="space-between"
-          alignItems={{ xs: 'flex-start', md: 'flex-start' }}
-          spacing={{ xs: 5, md: 4 }}
-          sx={{ ml: { md: '-25px' } }}
-        >
-          <Box sx={{ maxWidth: 665 }}>
-            <Typography variant="h3" component="h2" sx={{ lineHeight: 'normal' }}>
-              Let&apos;s get to know
-              <br />
-              each other!
-            </Typography>
-            <Typography sx={{ mt: 3, fontSize: 20, lineHeight: 'normal', color: colors.bodyStrong }}>
-              Feel free to drop me a message anytime
-              <br />I am ready to connect with you!
-            </Typography>
-          </Box>
-          <Stack direction="row" spacing={6} sx={{ pt: { md: '28px' }, pr: { md: '35px' } }}>
-            {footerColumns.map((column) => (
-              <Stack key={column.heading} spacing={3} sx={{ minWidth: { xs: 120, md: column.heading === 'DESIGN' ? 135 : 82 } }}>
-                <Typography sx={{ fontSize: 16, lineHeight: '22px', color: colors.bodyStrong }}>
-                  {column.heading}
-                </Typography>
-                {column.items.map((item) =>
-                  item.href ? (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      target={item.href.startsWith('mailto:') ? undefined : '_blank'}
-                      rel="noopener noreferrer"
-                      underline="hover"
-                      sx={{ fontSize: 14, lineHeight: '20px', fontWeight: 600, color: 'common.white' }}
-                    >
-                      {item.label}
-                    </Link>
-                  ) : (
-                    <Typography key={item.label} sx={{ fontSize: 14, lineHeight: '20px', fontWeight: 600 }}>
-                      {item.label}
-                    </Typography>
-                  )
-                )}
-              </Stack>
-            ))}
+      <Box component="footer" id="contact" sx={{ bgcolor: '#1d1d1d' }}>
+        <PageContainer sx={{ pt: { xs: 6, md: '64px' }, pb: { xs: 6, md: '64px' } }}>
+          <Stack
+            direction={{ xs: 'column', md: 'row' }}
+            justifyContent="space-between"
+            alignItems={{ xs: 'flex-start', md: 'flex-start' }}
+            spacing={{ xs: 5, md: 4 }}
+            sx={{ ml: { md: '-25px' } }}
+          >
+            <Box sx={{ maxWidth: 665 }}>
+              <Typography variant="h3" component="h2" sx={{ lineHeight: 'normal' }}>
+                Let&apos;s get to know
+                <br />
+                each other!
+              </Typography>
+              <Typography sx={{ mt: 3, fontSize: 20, lineHeight: 'normal', color: colors.bodyStrong }}>
+                Feel free to drop me a message anytime
+                <br />I am ready to connect with you!
+              </Typography>
+            </Box>
+            <Stack direction="row" spacing={6} sx={{ pt: { md: '28px' }, pr: { md: '35px' } }}>
+              {footerColumns.map((column) => (
+                <Stack key={column.heading} spacing={3} sx={{ minWidth: { xs: 120, md: column.heading === 'DESIGN' ? 135 : 82 } }}>
+                  <Typography sx={{ fontSize: 16, lineHeight: '22px', color: colors.bodyStrong }}>
+                    {column.heading}
+                  </Typography>
+                  {column.items.map((item) =>
+                    item.href ? (
+                      <Link
+                        key={item.label}
+                        href={item.href}
+                        target={item.href.startsWith('mailto:') ? undefined : '_blank'}
+                        rel="noopener noreferrer"
+                        underline="hover"
+                        sx={{ fontSize: 14, lineHeight: '20px', fontWeight: 600, color: 'common.white' }}
+                      >
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <Box key={item.label} sx={{ fontSize: 14, lineHeight: '20px', fontWeight: 600 }}>
+                        {item.label}
+                      </Box>
+                    )
+                  )}
+                </Stack>
+              ))}
+            </Stack>
           </Stack>
-        </Stack>
-      </PageContainer>
+        </PageContainer>
+      </Box>
     </Box>
   );
 };
