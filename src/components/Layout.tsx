@@ -3,14 +3,15 @@ import { Link as RouterLink, Outlet, useLocation } from 'react-router-dom';
 import { Box, Link, Stack, Typography } from '@mui/material';
 import PageContainer from './PageContainer';
 import PillButton from './PillButton';
+import WorkMenu from './WorkMenu';
 import { colors } from '@/theme';
 import { asset } from '@/utils/asset';
 import { links } from '@/data/links';
 
 const navLinks = [
+  { label: 'Play', to: '/vibe-coding' },
   { label: 'About', to: '/about' },
   { label: 'Resume', href: links.resume },
-  { label: 'Vibe coding', to: '/vibe-coding' },
 ];
 
 const footerColumns = [
@@ -69,6 +70,7 @@ const Layout = () => {
               />
             </Link>
             <Stack direction="row" alignItems="center" spacing={{ xs: 2, sm: 5 }}>
+              <WorkMenu sx={navLinkSx} />
               {navLinks.map((item) =>
                 item.to ? (
                   <Link key={item.label} component={RouterLink} to={item.to} underline="hover" sx={navLinkSx}>
