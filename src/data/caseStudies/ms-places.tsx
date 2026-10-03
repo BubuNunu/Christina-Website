@@ -1,6 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import PageContainer from '@/components/PageContainer';
-import { Section } from '@/components/caseStudy/CaseStudyBlocks';
+import { FigureImage, Section } from '@/components/caseStudy/CaseStudyBlocks';
+import { asset } from '@/utils/asset';
 import type { CaseStudyBlock, CaseStudyContent, Stat } from '@/components/caseStudy/types';
 
 // Text, paragraph breaks and bold/link spans match the Figma frame 2:1575 text layers.
@@ -196,9 +197,41 @@ const blocks: CaseStudyBlock[] = [
   },
   { kind: 'stats', items: keyStats },
   {
-    kind: 'figure',
-    src: img('intro-mockups'),
-    alt: 'Microsoft Places on a phone and on the web, showing the Today view for Building 4 with who is working there and upcoming meetings',
+    kind: 'custom',
+    content: (
+      <PageContainer sx={{ py: { xs: 2, md: 3 } }}>
+        <Box sx={{ position: 'relative' }}>
+          <FigureImage
+            src={img('intro-mockups')}
+            alt="Microsoft Places on a phone and on the web, showing the Today view for Building 4 with who is working there and upcoming meetings"
+          />
+          {/* Screen recording of the mobile Today page, laid over the phone's screen in the mockup.
+              Position and size are the phone screen's pixel box in the 2560x1484 picture. */}
+          <Box
+            component="video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-label="Screen recording of scrolling the MS Places mobile Today page"
+            sx={{
+              position: 'absolute',
+              left: `${(282 / 2560) * 100}%`,
+              top: `${(546 / 1484) * 100}%`,
+              width: `${(442 / 2560) * 100}%`,
+              height: `${(891 / 1484) * 100}%`,
+              objectFit: 'cover',
+              objectPosition: 'top',
+              borderRadius: '11% 11% 0 0 / 5.3% 5.3% 0 0',
+              display: 'block',
+            }}
+          >
+            <source src={asset('images/ms-places/homepage-phone.webm')} type="video/webm" />
+            <source src={asset('images/ms-places/homepage-phone.mp4')} type="video/mp4" />
+          </Box>
+        </Box>
+      </PageContainer>
+    ),
   },
   {
     kind: 'custom',
