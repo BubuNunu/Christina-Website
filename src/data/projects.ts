@@ -49,7 +49,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'optima-ninja',
-    title: 'Optima Ninja (0→1)',
+    title: 'Optima Ninja',
     summary:
       'Served as the founding solo designer shaping the company brand and digital experience from 0→1, driving 1K+ daily clicks, 120% more qualified leads, and a Top 5 Chinese SEO ranking.',
     image: 'images/home/optima-ninja.webp',
