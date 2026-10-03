@@ -30,15 +30,20 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Tells the build which address the site lives at: '' with the custom
+      # domain (ruishidesign.com), '/Sherry-UX-work-website' without it
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v4
+
       - name: Build
         run: npm run build
+        env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}/
 
       # Lets GitHub Pages serve page links like /about on refresh
       - name: Add SPA fallback
         run: cp dist/index.html dist/404.html
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

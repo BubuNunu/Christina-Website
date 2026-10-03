@@ -9,8 +9,9 @@ const __dirname = path.dirname(__filename)
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // GitHub Pages serves this repo at /Sherry-UX-work-website/
-  base: '/Sherry-UX-work-website/',
+  // The deploy workflow sets BASE_PATH from GitHub Pages: '/' once the
+  // custom domain (ruishidesign.com) is on, '/Sherry-UX-work-website/' before.
+  base: process.env.BASE_PATH || '/Sherry-UX-work-website/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
