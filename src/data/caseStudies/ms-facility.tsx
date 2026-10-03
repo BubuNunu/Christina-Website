@@ -9,6 +9,7 @@ import { Stats } from "@/components/caseStudy/CaseStudyBlocks";
 import PageContainer from "@/components/PageContainer";
 import { colors } from "@/theme";
 import { asset } from "@/utils/asset";
+import { keepMuted } from "@/utils/video";
 
 const link = (href: string, children: ReactNode) => (
   <Box
@@ -192,6 +193,7 @@ const VideoPanel = ({
       </Typography>
       <Box
         component="video"
+        ref={keepMuted}
         autoPlay
         muted
         loop

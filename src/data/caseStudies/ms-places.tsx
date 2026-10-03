@@ -2,6 +2,7 @@ import { Box, Typography } from '@mui/material';
 import PageContainer from '@/components/PageContainer';
 import { FigureImage, Section } from '@/components/caseStudy/CaseStudyBlocks';
 import { asset } from '@/utils/asset';
+import { keepMuted } from '@/utils/video';
 import type { CaseStudyBlock, CaseStudyContent, Stat } from '@/components/caseStudy/types';
 
 // Text, paragraph breaks and bold/link spans match the Figma frame 2:1575 text layers.
@@ -209,6 +210,7 @@ const blocks: CaseStudyBlock[] = [
               Position and size are the phone screen's pixel box in the 2560x1484 picture. */}
           <Box
             component="video"
+            ref={keepMuted}
             autoPlay
             muted
             loop

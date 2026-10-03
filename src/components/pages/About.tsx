@@ -223,7 +223,9 @@ const About = () => (
             key={item.company}
             sx={{
               display: 'grid',
-              gridTemplateColumns: { xs: '1fr', md: '400px 462px 1fr' },
+              // Figma columns 400 / 462 / 415px, shrinking proportionally below 1440px.
+              gridTemplateColumns: { xs: '1fr', md: 'minmax(0, 400fr) minmax(0, 462fr) minmax(0, 418fr)' },
+              columnGap: { md: 3 },
               alignItems: 'start',
               rowGap: 1,
               pt: index === 0 ? 0 : { xs: 3, md: '38px' },
