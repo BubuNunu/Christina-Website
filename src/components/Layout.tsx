@@ -33,11 +33,27 @@ const footerColumns = [
   },
 ];
 
+// Header items get a soft frosted pill on hover/focus instead of an underline.
+// The current page keeps the pill (via aria-current / aria-expanded).
 const navLinkSx = {
+  display: 'inline-flex',
+  alignItems: 'center',
   fontSize: { xs: 13, sm: 14 },
   lineHeight: '20px',
-  color: 'common.white',
+  color: 'rgba(255, 255, 255, 0.8)',
   whiteSpace: 'nowrap',
+  textDecoration: 'none',
+  px: { xs: 1, sm: '14px' },
+  py: '8px',
+  borderRadius: '999px',
+  transition: 'background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease',
+  '&:hover, &:focus-visible, &[aria-current="page"], &[aria-expanded="true"]': {
+    color: '#ffffff',
+    bgcolor: 'rgba(255, 255, 255, 0.1)',
+    boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 0 18px rgba(172, 160, 245, 0.25)',
+    textDecoration: 'none',
+  },
+  '&:focus-visible': { outline: `2px solid ${colors.accent}`, outlineOffset: '2px' },
 };
 
 const Layout = () => {
@@ -69,11 +85,18 @@ const Layout = () => {
                 sx={{ width: { xs: 96, md: 125 }, height: 'auto', display: 'block' }}
               />
             </Link>
-            <Stack direction="row" alignItems="center" spacing={{ xs: 2, sm: 5 }}>
-              <WorkMenu sx={navLinkSx} />
+            <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: '12px' }}>
+              <WorkMenu sx={navLinkSx} active={pathname.startsWith('/projects/')} />
               {navLinks.map((item) =>
                 item.to ? (
-                  <Link key={item.label} component={RouterLink} to={item.to} underline="hover" sx={navLinkSx}>
+                  <Link
+                    key={item.label}
+                    component={RouterLink}
+                    to={item.to}
+                    underline="none"
+                    aria-current={pathname === item.to ? 'page' : undefined}
+                    sx={navLinkSx}
+                  >
                     {item.label}
                   </Link>
                 ) : (
@@ -82,8 +105,8 @@ const Layout = () => {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    underline="hover"
-                    sx={[navLinkSx, { display: { xs: 'none', sm: 'inline' } }]}
+                    underline="none"
+                    sx={[navLinkSx, { display: { xs: 'none', sm: 'inline-flex' } }]}
                   >
                     {item.label}
                   </Link>
@@ -93,7 +116,16 @@ const Layout = () => {
                 href={links.linkedIn}
                 target="_blank"
                 rel="noopener noreferrer"
-                sx={{ display: { xs: 'none', sm: 'inline-flex' } }}
+                sx={{
+                  display: { xs: 'none', sm: 'inline-flex' },
+                  ml: { sm: '28px !important' },
+                  transition: 'transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease',
+                  '&:hover': {
+                    bgcolor: '#ffffff',
+                    transform: 'translateY(-1px)',
+                    boxShadow: '0 6px 24px rgba(172, 160, 245, 0.45)',
+                  },
+                }}
               >
                 Say Hello
               </PillButton>

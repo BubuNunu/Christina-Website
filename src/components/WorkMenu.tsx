@@ -5,7 +5,7 @@ import { projects } from '@/data/projects';
 import { colors } from '@/theme';
 
 // "Work" header item: a dropdown listing the six case studies from Home.
-const WorkMenu = ({ sx }: { sx?: SxProps<Theme> }) => {
+const WorkMenu = ({ sx, active }: { sx?: SxProps<Theme>; active?: boolean }) => {
   const [anchor, setAnchor] = useState<MenuProps['anchorEl']>(null);
   const open = Boolean(anchor);
   const close = () => setAnchor(null);
@@ -17,10 +17,11 @@ const WorkMenu = ({ sx }: { sx?: SxProps<Theme> }) => {
         aria-controls={open ? 'work-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
+        aria-current={active ? 'page' : undefined}
         onClick={(event) => setAnchor(event.currentTarget)}
         disableRipple
         sx={[
-          { gap: '4px', fontFamily: 'inherit', '&:hover': { textDecoration: 'underline' } },
+          { gap: '4px', fontFamily: 'inherit' },
           ...(Array.isArray(sx) ? sx : [sx]),
         ]}
       >
@@ -62,7 +63,15 @@ const WorkMenu = ({ sx }: { sx?: SxProps<Theme> }) => {
             component={RouterLink}
             to={`/projects/${project.slug}`}
             onClick={close}
-            sx={{ fontSize: 14, lineHeight: '20px', py: 1.25, '&:hover': { color: colors.accent } }}
+            sx={{
+              fontSize: 14,
+              lineHeight: '20px',
+              py: 1.25,
+              mx: 1,
+              borderRadius: '10px',
+              transition: 'background-color 0.2s ease, color 0.2s ease',
+              '&:hover, &.Mui-focusVisible': { color: '#ffffff', bgcolor: 'rgba(255, 255, 255, 0.08)' },
+            }}
           >
             {project.title}
           </MenuItem>
