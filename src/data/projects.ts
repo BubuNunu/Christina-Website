@@ -13,7 +13,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: 'ms-places',
-    title: 'MS Places (0→1)',
+    title: 'MS Places',
     summary:
       'Led 0→1 mobile design across 5 designers and 9 partner teams, scaling Microsoft Places to 5.7M MAU and 1,500+ enterprise customers within 3 months of launch.',
     image: 'images/home/ms-places.webp',
