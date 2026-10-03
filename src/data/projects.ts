@@ -4,6 +4,9 @@ export interface Project {
   summary: string;
   // Card picture on Home, under public/
   image: string;
+  // Optional looping clip that plays over the picture on hover: path under public/
+  // without extension; a .webm and an .mp4 must both exist
+  hoverVideo?: string;
 }
 
 // Case studies from the Figma "website 页面" page, in the order shown on Home.
@@ -14,6 +17,7 @@ export const projects: Project[] = [
     summary:
       'Led 0→1 mobile design across 5 designers and 9 partner teams, scaling Microsoft Places to 5.7M MAU and 1,500+ enterprise customers within 3 months of launch.',
     image: 'images/home/ms-places.webp',
+    hoverVideo: 'images/home/ms-places-hover',
   },
   {
     slug: 'm365-ess-agent',
