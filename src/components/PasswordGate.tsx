@@ -8,11 +8,6 @@ import { passwordHash, passwordIterations, passwordSalt } from '@/data/password'
 // The site's files themselves are still public on GitHub Pages.
 const storageKey = 'site-unlocked';
 
-// The browser's crypto tools only work over https, so send http visitors there.
-if (typeof window !== 'undefined' && !window.isSecureContext && location.protocol === 'http:') {
-  location.replace(location.href.replace(/^http:/, 'https:'));
-}
-
 const toHex = (buf: ArrayBuffer) =>
   Array.from(new Uint8Array(buf), (b) => b.toString(16).padStart(2, '0')).join('');
 
@@ -56,6 +51,11 @@ const PasswordGate = ({ children }: { children: ReactNode }) => {
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
+    // The browser's crypto tools only work over https
+    if (!window.crypto?.subtle) {
+      location.replace(location.href.replace(/^http:/, 'https:'));
+      return;
+    }
     setChecking(true);
     const ok = (await hashPassword(value)) === passwordHash;
     setChecking(false);
