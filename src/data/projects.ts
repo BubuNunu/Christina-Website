@@ -21,14 +21,14 @@ export const projects: Project[] = [
   },
   {
     slug: 'm365-ess-agent',
-    title: 'AI Vision → M365 ESS Agent',
+    title: 'M365 ESS Agent',
     summary:
       'Led the end-to-end design of an Employee Self-Service agent in Microsoft 365 Copilot, turning AI vision into scalable workplace experiences for enterprise employees.',
     image: 'images/home/m365-ess-agent.webp',
   },
   {
     slug: 'ms-facility',
-    title: 'MS Facility → Operation Ecosystem',
+    title: 'Facilities & Operations',
     summary:
       'Started with 3 AI vision videos that shaped the roadmap for Microsoft’s 15-year-old Facilities platform, ultimately scaling into an AI-powered operations ecosystem unifying 90+ dashboards.',
     image: 'images/home/ms-facility.webp',
@@ -42,7 +42,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'wm-design-system',
-    title: 'WM.com + First Design System',
+    title: 'WM.com Design System',
     summary:
       'Led end-to-end product design across WM.com and My WM for 21M+ users, while establishing WM’s first enterprise design system to unify experiences and scale design across products.',
     image: 'images/home/wm-design-system.webp',
