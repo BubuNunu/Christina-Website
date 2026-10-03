@@ -8,6 +8,7 @@ import type {
 import { Stats } from "@/components/caseStudy/CaseStudyBlocks";
 import PageContainer from "@/components/PageContainer";
 import { colors } from "@/theme";
+import { asset } from "@/utils/asset";
 
 const link = (href: string, children: ReactNode) => (
   <Box
@@ -161,6 +162,57 @@ const ImpactRows = () => (
   </PageContainer>
 );
 
+// Titled dark card with a looping, muted screen recording (WebM first, MP4 fallback for Safari).
+// Proportions follow the "Figma Make prototype" picture this replaces.
+const VideoPanel = ({
+  title,
+  name,
+  alt,
+  background = "#28272a",
+  framed = true,
+}: {
+  title: string;
+  name: string;
+  alt: string;
+  background?: string;
+  framed?: boolean;
+}) => (
+  <PageContainer sx={{ py: { xs: 2, md: 3 } }}>
+    <Box
+      sx={{
+        bgcolor: background,
+        borderRadius: "24px",
+        px: { xs: 2, md: "45px" },
+        pt: { xs: 2.5, md: "40px" },
+        pb: { xs: 2.5, md: "42px" },
+      }}
+    >
+      <Typography sx={{ color: "#ffffff", fontSize: { xs: 18, md: 22 }, fontWeight: 500, lineHeight: "normal" }}>
+        {title}
+      </Typography>
+      <Box
+        component="video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster={asset(`images/ms-facility/${name}-poster.webp`)}
+        aria-label={alt}
+        sx={{
+          display: "block",
+          width: "100%",
+          height: "auto",
+          mt: { xs: 2, md: "60px" },
+          borderRadius: framed ? { xs: "10px", md: "20px" } : 0,
+        }}
+      >
+        <source src={asset(`images/ms-facility/${name}.webm`)} type="video/webm" />
+        <source src={asset(`images/ms-facility/${name}.mp4`)} type="video/mp4" />
+      </Box>
+    </Box>
+  </PageContainer>
+);
+
 const msFacility: CaseStudyContent = {
   tags: ["Design lead", "System + operational thinking"],
   hero: {
@@ -286,7 +338,18 @@ const msFacility: CaseStudyContent = {
         </>
       ),
     },
-    // TODO(figma 2:2123, 1280x849): "MS facility portal 2.0 demo" prototype — no matching picture/video in the Drive folder yet.
+    {
+      kind: "custom",
+      content: (
+        <VideoPanel
+          title="MS facility portal 2.0 demo"
+          name="portal-2-demo"
+          alt="Demo of the MS facility portal 2.0 on a laptop: picking a building and room to make a facility request"
+          background="#000000"
+          framed={false}
+        />
+      ),
+    },
     {
       kind: "section",
       eyebrow: "Outcome",
@@ -421,9 +484,14 @@ const msFacility: CaseStudyContent = {
       alt: "My design exploration: a grid of eight early dashboard concepts with charts, tables and KPI cards",
     },
     {
-      kind: "figure",
-      src: "images/ms-facility/figma-make-prototype.webp",
-      alt: "Figma Make prototype of the Building Orchestrator facilities management dashboard with fault KPIs and an assets-with-a-fault bar chart",
+      kind: "custom",
+      content: (
+        <VideoPanel
+          title="Figma Make prototype"
+          name="figma-make-prototype"
+          alt="Figma Make prototype of the Building Orchestrator facilities management dashboard: fault KPIs, an assets-with-a-fault chart and the faults table"
+        />
+      ),
     },
     {
       kind: "section",
