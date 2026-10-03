@@ -7,21 +7,24 @@ import Project from './components/pages/Project';
 import About from './components/pages/About';
 import VibeCoding from './components/pages/VibeCoding';
 import NotFound from './components/pages/NotFound';
+import PasswordGate from './components/PasswordGate';
 
 const App = () => {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Routes>
-          <Route element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="projects/:slug" element={<Project />} />
-            <Route path="about" element={<About />} />
-            <Route path="vibe-coding" element={<VibeCoding />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
+        <PasswordGate>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="projects/:slug" element={<Project />} />
+              <Route path="about" element={<About />} />
+              <Route path="vibe-coding" element={<VibeCoding />} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+        </PasswordGate>
       </ThemeProvider>
     </BrowserRouter>
   );
