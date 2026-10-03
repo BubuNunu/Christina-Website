@@ -40,8 +40,8 @@ const footerColumns = [
 const navLinkSx = {
   display: 'inline-flex',
   alignItems: 'center',
-  fontSize: 14,
-  lineHeight: '20px',
+  fontSize: { xs: 16, sm: 16, md: 16, lg: 16 },
+  lineHeight: '22px',
   fontWeight: 400,
   color: '#ffffff',
   whiteSpace: 'nowrap',
@@ -68,6 +68,18 @@ const navLinkSx = {
     textDecoration: 'none',
   },
   '&:focus-visible': { outline: `2px solid ${colors.accent}`, outlineOffset: '2px' },
+};
+
+// Footer links use the same purple, bold interaction as the header.
+const footerLinkSx = {
+  ...navLinkSx,
+  fontWeight: 600,
+  px: 0,
+  py: 0,
+  '& .nav-label': {
+    ...navLinkSx['& .nav-label'],
+    alignItems: 'flex-start',
+  },
 };
 
 // Below this width the header items don't fit in one row, so they move into a menu.
@@ -149,6 +161,7 @@ const Layout = () => {
                 rel="noopener noreferrer"
                 sx={{
                   ml: '28px !important',
+                  fontSize: 16,
                   transition: 'transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease',
                   '&:hover': {
                     bgcolor: '#ffffff',
@@ -178,12 +191,12 @@ const Layout = () => {
             sx={{ ml: { md: '-25px' } }}
           >
             <Box sx={{ maxWidth: 665 }}>
-              <Typography variant="h3" component="h2" sx={{ lineHeight: 'normal' }}>
-                Let&apos;s get to know
+              <Typography variant="h3" component="h2" sx={{ fontSize: { xs: 36, sm: 48, md: 48, lg: 48 }, lineHeight: 'normal' }}>
+                Let’s get to know
                 <br />
-                each other!
+                each other! 👋
               </Typography>
-              <Typography sx={{ mt: 3, fontSize: 20, lineHeight: 'normal', color: colors.bodyStrong }}>
+              <Typography sx={{ mt: 3, fontSize: { xs: 16, sm: 16, md: 16, lg: 16 }, lineHeight: 'normal', color: colors.bodyStrong }}>
                 Feel free to drop me a message anytime
                 <br />I am ready to connect with you!
               </Typography>
@@ -191,7 +204,7 @@ const Layout = () => {
             <Stack direction="row" spacing={6} sx={{ pt: { md: '28px' }, pr: { md: '35px' } }}>
               {footerColumns.map((column) => (
                 <Stack key={column.heading} spacing={3} sx={{ minWidth: { xs: 120, md: column.heading === 'DESIGN' ? 135 : 82 } }}>
-                  <Typography sx={{ fontSize: 16, lineHeight: '22px', color: colors.bodyStrong }}>
+                  <Typography sx={{ fontSize: { xs: 16, sm: 16, md: 16, lg: 16 }, lineHeight: '22px', color: colors.bodyStrong }}>
                     {column.heading}
                   </Typography>
                   {column.items.map((item) =>
@@ -201,13 +214,13 @@ const Layout = () => {
                         href={item.href}
                         target={item.href.startsWith('mailto:') ? undefined : '_blank'}
                         rel="noopener noreferrer"
-                        underline="hover"
-                        sx={{ fontSize: 14, lineHeight: '20px', fontWeight: 600, color: 'common.white' }}
+                        underline="none"
+                        sx={footerLinkSx}
                       >
-                        {item.label}
+                        <NavLabel>{item.label}</NavLabel>
                       </Link>
                     ) : (
-                      <Box key={item.label} sx={{ fontSize: 14, lineHeight: '20px', fontWeight: 600 }}>
+                      <Box key={item.label} sx={{ fontSize: { xs: 16, sm: 16, md: 16, lg: 16 }, lineHeight: '22px', fontWeight: 600 }}>
                         {item.label}
                       </Box>
                     )

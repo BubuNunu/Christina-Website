@@ -65,8 +65,8 @@ const WorkMenu = ({ sx, active }: { sx?: SxProps<Theme>; active?: boolean }) => 
             to={`/projects/${project.slug}`}
             onClick={close}
             sx={{
-              fontSize: 14,
-              lineHeight: '20px',
+              fontSize: 16,
+              lineHeight: '22px',
               py: 1.25,
               mx: 1,
               borderRadius: '10px',

@@ -11,8 +11,8 @@ import { colors } from '@/theme';
 const itemSx = {
   display: 'block',
   py: 1.25,
-  fontSize: 20,
-  lineHeight: '28px',
+  fontSize: 16,
+  lineHeight: '22px',
   fontWeight: 600,
   color: '#ffffff',
   textDecoration: 'none',
@@ -85,7 +85,7 @@ const MobileMenu = ({ headerHeight }: { headerHeight: number }) => {
         }}
       >
         <Box component="nav" aria-label="Main" sx={{ px: 2, pt: 2, pb: 'calc(24px + env(safe-area-inset-bottom))' }}>
-          <Typography sx={{ fontSize: 13, letterSpacing: '0.08em', color: colors.muted, pb: 0.5 }}>WORK</Typography>
+          <Typography sx={{ fontSize: 16, lineHeight: '22px', letterSpacing: '0.08em', color: colors.muted, pb: 0.5 }}>WORK</Typography>
           <Box sx={{ pl: 1.5, borderLeft: `1px solid ${colors.divider}`, mb: 1.5 }}>
             {projects.map((project) => (
               <Link
@@ -109,7 +109,7 @@ const MobileMenu = ({ headerHeight }: { headerHeight: number }) => {
             Resume
           </Link>
           <Stack direction="row" sx={{ mt: 2 }}>
-            <PillButton href={links.linkedIn} target="_blank" rel="noopener noreferrer" sx={{ width: '100%' }}>
+            <PillButton href={links.linkedIn} target="_blank" rel="noopener noreferrer" sx={{ width: '100%', fontSize: 16 }}>
               Say Hello
             </PillButton>
           </Stack>
