@@ -212,7 +212,7 @@ const About = () => (
     />
 
     {/* My experiences 2:2839 */}
-    <PageContainer sx={{ pt: { xs: 8, md: '120px' } }}>
+    <PageContainer sx={{ pt: { xs: 8, md: '120px' }, pb: { xs: 6, md: '150px' } }}>
       <Typography component="h2" sx={{ fontSize: 24, fontWeight: 600, lineHeight: 'normal', color: colors.muted }}>
         My experiences
       </Typography>
@@ -245,13 +245,6 @@ const About = () => (
           </Box>
         ))}
       </Box>
-    </PageContainer>
-
-    {/* Closing line 2:2832 */}
-    <PageContainer sx={{ pt: { xs: 8, md: '120px' }, pb: { xs: 6, md: '150px' } }}>
-      <Typography variant="h2" component="p" sx={{ fontWeight: 500, lineHeight: 'normal', color: colors.bodyStrong }}>
-        Don’t hesitate to drop me a message — I’m always happy to connect! 👋
-      </Typography>
     </PageContainer>
   </>
 );
