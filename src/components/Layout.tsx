@@ -3,6 +3,7 @@ import { Link as RouterLink, Outlet, useLocation } from 'react-router-dom';
 import { Box, Link, Stack, Typography } from '@mui/material';
 import PageContainer from './PageContainer';
 import PillButton from './PillButton';
+import NavLabel from './NavLabel';
 import WorkMenu from './WorkMenu';
 import { colors } from '@/theme';
 import { asset } from '@/utils/asset';
@@ -33,24 +34,36 @@ const footerColumns = [
   },
 ];
 
-// Header items get a soft frosted pill on hover/focus instead of an underline.
-// The current page keeps the pill (via aria-current / aria-expanded).
+// Header items turn purple and bold on hover/focus; the current page stays that way.
+// Each label reserves its bold width (see NavLabel) so neighbours don't shift.
 const navLinkSx = {
   display: 'inline-flex',
   alignItems: 'center',
   fontSize: { xs: 13, sm: 14 },
   lineHeight: '20px',
-  color: 'rgba(255, 255, 255, 0.8)',
+  fontWeight: 400,
+  color: '#ffffff',
   whiteSpace: 'nowrap',
   textDecoration: 'none',
   px: { xs: 1, sm: '14px' },
   py: '8px',
-  borderRadius: '999px',
-  transition: 'background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease',
+  borderRadius: '8px',
+  transition: 'color 0.2s ease',
+  '& .nav-label': {
+    display: 'inline-flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    '&::after': {
+      content: 'attr(data-label)',
+      fontWeight: 700,
+      height: 0,
+      overflow: 'hidden',
+      visibility: 'hidden',
+    },
+  },
   '&:hover, &:focus-visible, &[aria-current="page"], &[aria-expanded="true"]': {
-    color: '#ffffff',
-    bgcolor: 'rgba(255, 255, 255, 0.1)',
-    boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 0 18px rgba(172, 160, 245, 0.25)',
+    color: colors.accent,
+    fontWeight: 700,
     textDecoration: 'none',
   },
   '&:focus-visible': { outline: `2px solid ${colors.accent}`, outlineOffset: '2px' },
@@ -97,7 +110,7 @@ const Layout = () => {
                     aria-current={pathname === item.to ? 'page' : undefined}
                     sx={navLinkSx}
                   >
-                    {item.label}
+                    <NavLabel>{item.label}</NavLabel>
                   </Link>
                 ) : (
                   <Link
@@ -108,7 +121,7 @@ const Layout = () => {
                     underline="none"
                     sx={[navLinkSx, { display: { xs: 'none', sm: 'inline-flex' } }]}
                   >
-                    {item.label}
+                    <NavLabel>{item.label}</NavLabel>
                   </Link>
                 )
               )}

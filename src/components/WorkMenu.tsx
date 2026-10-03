@@ -3,6 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Box, ButtonBase, Menu, MenuItem, type MenuProps, type SxProps, type Theme } from '@mui/material';
 import { projects } from '@/data/projects';
 import { colors } from '@/theme';
+import NavLabel from './NavLabel';
 
 // "Work" header item: a dropdown listing the six case studies from Home.
 const WorkMenu = ({ sx, active }: { sx?: SxProps<Theme>; active?: boolean }) => {
@@ -25,7 +26,7 @@ const WorkMenu = ({ sx, active }: { sx?: SxProps<Theme>; active?: boolean }) => 
           ...(Array.isArray(sx) ? sx : [sx]),
         ]}
       >
-        Work
+        <NavLabel>Work</NavLabel>
         <Box
           component="svg"
           viewBox="0 0 12 12"
