@@ -2,6 +2,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Box, Grid, Link, Typography } from '@mui/material';
 import PageContainer from '../PageContainer';
 import PillButton from '../PillButton';
+import { links } from '@/data/links';
 import { projects } from '@/data/projects';
 import { colors } from '@/theme';
 import { asset } from '@/utils/asset';
@@ -96,7 +97,7 @@ const Home = () => (
             Outside of work, you’ll find me volunteering at animal shelters and Asian community events, exploring DIY
             projects, or out hiking and mushroom foraging. 🍄 I also have a cat, her name is Kiki. 🐱
           </Typography>
-          <PillButton href="#contact" sx={{ mt: '38px', px: '18px' }}>
+          <PillButton href={links.linkedIn} target="_blank" rel="noopener noreferrer" sx={{ mt: '38px', px: '18px' }}>
             Say Hello
           </PillButton>
         </Box>
