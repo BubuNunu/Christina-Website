@@ -88,7 +88,9 @@ const Layout = () => {
                 )
               )}
               <PillButton
-                href="#contact"
+                href={links.linkedIn}
+                target="_blank"
+                rel="noopener noreferrer"
                 sx={{ display: { xs: 'none', sm: 'inline-flex' } }}
               >
                 Say Hello
