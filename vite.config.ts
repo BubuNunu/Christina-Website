@@ -9,9 +9,9 @@ const __dirname = path.dirname(__filename)
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // Vercel serves the site at the root. The GitHub Pages workflow sets BASE_PATH
-  // ('/' with the custom domain, '/Sherry-UX-work-website/' without).
-  base: process.env.BASE_PATH || (process.env.VERCEL ? '/' : '/Sherry-UX-work-website/'),
+  // The deploy workflow sets BASE_PATH from GitHub Pages: '/' once the
+  // custom domain (ruishidesign.com) is on, '/Sherry-UX-work-website/' before.
+  base: process.env.BASE_PATH || '/Sherry-UX-work-website/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
