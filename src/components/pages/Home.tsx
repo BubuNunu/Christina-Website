@@ -134,7 +134,7 @@ const Home = () => {
                 <Typography variant="h4" component="h2" sx={{ mt: '30px', fontWeight: 700, lineHeight: '32px', color: colors.bodyStrong, transition: 'color 0.2s' }}>
                   {project.title}
                 </Typography>
-                <Typography sx={{ mt: 1, fontSize: 16, color: '#E6E6E6' }}>{project.summary}</Typography>
+                <Typography sx={{ mt: 1, fontSize: { xs: 16, sm: 16, md: 16, lg: 16 }, color: '#E6E6E6' }}>{project.summary}</Typography>
               </Link>
             </Grid>
           ))}
@@ -156,11 +156,11 @@ const Home = () => {
             <Typography variant="h3" component="h2">
               About me
             </Typography>
-            <Typography sx={{ mt: '12px', fontSize: 16, color: '#E6E6E6' }}>
+            <Typography sx={{ mt: '12px', fontSize: { xs: 16, sm: 16, md: 16, lg: 16 }, color: '#E6E6E6' }}>
               Hi, I’m Rui Shi, a product designer passionate about design, AI, and turning new ideas into meaningful
               experiences.
             </Typography>
-            <Typography sx={{ mt: '28px', fontSize: 16, color: '#E6E6E6' }}>
+            <Typography sx={{ mt: '28px', fontSize: { xs: 16, sm: 16, md: 16, lg: 16 }, color: '#E6E6E6' }}>
               Outside of work, you’ll find me volunteering at animal shelters and Asian community events, exploring DIY
               projects, or out hiking and mushroom foraging. 🍄 I also have a cat, her name is Kiki. 🐱
             </Typography>
