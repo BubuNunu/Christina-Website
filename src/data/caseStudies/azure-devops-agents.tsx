@@ -3,6 +3,7 @@ import { Stats } from '@/components/caseStudy/CaseStudyBlocks';
 import type { CaseStudyContent } from '@/components/caseStudy/types';
 import PageContainer from '@/components/PageContainer';
 import { asset } from '@/utils/asset';
+import { keepMuted } from '@/utils/video';
 
 // Content from Figma frame 2:2203 ("Azure DevOps Agents"); text, paragraph breaks and bold/link
 // spans match the decoded Figma text layers. Pictures are the designer's 2x exports from Google
@@ -45,6 +46,7 @@ const AbTestingVideos = () => (
           <Box key={option.name}>
             <Box
               component="video"
+              ref={keepMuted}
               autoPlay
               muted
               loop

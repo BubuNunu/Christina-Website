@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link as RouterLink, Outlet, useLocation } from 'react-router-dom';
 import { Box, Link, Stack, Typography } from '@mui/material';
 import PageContainer from './PageContainer';
 import PillButton from './PillButton';
 import NavLabel from './NavLabel';
 import WorkMenu from './WorkMenu';
+import MobileMenu from './MobileMenu';
 import { colors } from '@/theme';
 import { asset } from '@/utils/asset';
 import { links } from '@/data/links';
@@ -39,13 +40,13 @@ const footerColumns = [
 const navLinkSx = {
   display: 'inline-flex',
   alignItems: 'center',
-  fontSize: { xs: 13, sm: 14 },
+  fontSize: 14,
   lineHeight: '20px',
   fontWeight: 400,
   color: '#ffffff',
   whiteSpace: 'nowrap',
   textDecoration: 'none',
-  px: { xs: 1, sm: '14px' },
+  px: '14px',
   py: '8px',
   borderRadius: '8px',
   transition: 'color 0.2s ease',
@@ -69,8 +70,21 @@ const navLinkSx = {
   '&:focus-visible': { outline: `2px solid ${colors.accent}`, outlineOffset: '2px' },
 };
 
+// Below this width the header items don't fit in one row, so they move into a menu.
+const phoneHeader = '@media (max-width: 719.95px)';
+
 const Layout = () => {
   const { pathname } = useLocation();
+  const headerRef = useRef<HTMLElement>(null);
+  const [headerHeight, setHeaderHeight] = useState(64);
+
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    const observer = new ResizeObserver(() => setHeaderHeight(header.offsetHeight));
+    observer.observe(header);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -80,6 +94,7 @@ const Layout = () => {
     <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', bgcolor: 'background.default' }}>
       <Box
         component="header"
+        ref={headerRef}
         sx={{
           position: 'sticky',
           top: 0,
@@ -98,7 +113,10 @@ const Layout = () => {
                 sx={{ width: { xs: 96, md: 125 }, height: 'auto', display: 'block' }}
               />
             </Link>
-            <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: '12px' }}>
+            <Box sx={{ display: 'none', [phoneHeader]: { display: 'flex' } }}>
+              <MobileMenu headerHeight={headerHeight} />
+            </Box>
+            <Stack direction="row" alignItems="center" spacing="12px" sx={{ [phoneHeader]: { display: 'none' } }}>
               <WorkMenu sx={navLinkSx} active={pathname.startsWith('/projects/')} />
               {navLinks.map((item) =>
                 item.to ? (
@@ -119,7 +137,7 @@ const Layout = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     underline="none"
-                    sx={[navLinkSx, { display: { xs: 'none', sm: 'inline-flex' } }]}
+                    sx={navLinkSx}
                   >
                     <NavLabel>{item.label}</NavLabel>
                   </Link>
@@ -130,8 +148,7 @@ const Layout = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{
-                  display: { xs: 'none', sm: 'inline-flex' },
-                  ml: { sm: '28px !important' },
+                  ml: '28px !important',
                   transition: 'transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease',
                   '&:hover': {
                     bgcolor: '#ffffff',

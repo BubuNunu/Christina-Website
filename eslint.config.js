@@ -29,6 +29,8 @@ export default [
       'react-hooks': reactHooksPlugin,
     },
     rules: {
+      // TypeScript already checks for undefined names, including browser globals.
+      'no-undef': 'off',
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
       '@typescript-eslint/explicit-function-return-type': 'off',

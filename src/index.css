@@ -10,3 +10,13 @@ body,
   min-height: 100%;
   background: #000;
 }
+
+html {
+  /* Keep iPhone and Android from enlarging text on their own when rotated. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: clip;
+}
