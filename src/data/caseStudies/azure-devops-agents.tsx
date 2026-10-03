@@ -1,6 +1,8 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { Stats } from '@/components/caseStudy/CaseStudyBlocks';
 import type { CaseStudyContent } from '@/components/caseStudy/types';
+import PageContainer from '@/components/PageContainer';
+import { asset } from '@/utils/asset';
 
 // Content from Figma frame 2:2203 ("Azure DevOps Agents"); text, paragraph breaks and bold/link
 // spans match the decoded Figma text layers. Pictures are the designer's 2x exports from Google
@@ -8,6 +10,63 @@ import type { CaseStudyContent } from '@/components/caseStudy/types';
 
 // Bold span that keeps the body colour (Figma bolds these without turning them white).
 const boldSx = { fontWeight: 700 };
+
+// "Design proposal A/ B testing" card (was the ADO-8 picture): the two option recordings play
+// side by side, muted on a loop, with the option captions underneath as in the picture.
+const abOptions = [
+  { name: 'option-a-side-by-side', caption: 'Option A: side by side preview' },
+  { name: 'option-b-pop-up', caption: 'Option B: Pop-up window preview' },
+];
+
+const AbTestingVideos = () => (
+  <PageContainer sx={{ py: { xs: 2, md: 3 } }}>
+    <Box
+      sx={{
+        bgcolor: '#28272c',
+        borderRadius: '24px',
+        px: { xs: 2, md: '41px' },
+        pt: { xs: 2.5, md: '38px' },
+        pb: { xs: 2.5, md: '36px' },
+      }}
+    >
+      <Typography sx={{ color: '#ffffff', fontSize: { xs: 18, md: 22 }, fontWeight: 500, lineHeight: 'normal' }}>
+        Design proposal A/ B testing
+      </Typography>
+      <Box
+        sx={{
+          mt: { xs: 2, md: '50px' },
+          display: 'grid',
+          gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+          columnGap: { sm: '3%' },
+          rowGap: 3,
+        }}
+      >
+        {abOptions.map((option) => (
+          <Box key={option.name}>
+            <Box
+              component="video"
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster={asset(`images/azure-devops-agents/${option.name}-poster.webp`)}
+              aria-label={`Screen recording of ${option.caption}`}
+              sx={{ display: 'block', width: '100%', height: 'auto' }}
+            >
+              <source src={asset(`images/azure-devops-agents/${option.name}.webm`)} type="video/webm" />
+              <source src={asset(`images/azure-devops-agents/${option.name}.mp4`)} type="video/mp4" />
+            </Box>
+            <Typography
+              sx={{ mt: { xs: 1.5, md: '24px' }, color: '#ffffff', fontSize: { xs: 16, md: 22 }, lineHeight: 'normal' }}
+            >
+              {option.caption}
+            </Typography>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  </PageContainer>
+);
 
 const azureDevopsAgents: CaseStudyContent = {
   tags: ['developer tool', 'AI agents'],
@@ -151,11 +210,7 @@ const azureDevopsAgents: CaseStudyContent = {
       src: 'images/azure-devops-agents/ado-7.webp',
       alt: 'Old child item generator issues: tab used as an action, unclear hover and click, and unclear open and save',
     },
-    {
-      kind: 'figure',
-      src: 'images/azure-devops-agents/ado-8.webp',
-      alt: 'Design proposal A/B testing: option A with a side-by-side preview and option B with a pop-up window preview',
-    },
+    { kind: 'custom', content: <AbTestingVideos /> },
     {
       kind: 'figure',
       src: 'images/azure-devops-agents/ado-9.webp',
