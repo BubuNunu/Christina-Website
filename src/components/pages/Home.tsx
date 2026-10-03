@@ -49,8 +49,10 @@ const Home = () => {
     <>
       {/* Hero */}
       <PageContainer sx={{ pt: { xs: 4, md: '45px' }, pb: { xs: 6, md: '46px' } }}>
-        <Typography variant="h1" sx={{ maxWidth: 717, lineHeight: 'normal' }}>
-          Building AI products from zero to scale
+        <Typography variant="h1" sx={{ maxWidth: 717, fontSize: { xs: 32, sm: 48, md: 60, lg: 60 }, lineHeight: 1.2 }}>
+          Building AI products
+          <br />
+          from zero to scale
         </Typography>
         <Typography
           sx={{
@@ -131,10 +133,10 @@ const Home = () => {
                     </Box>
                   )}
                 </Box>
-                <Typography variant="h4" component="h2" sx={{ mt: '30px', fontWeight: 700, lineHeight: '32px', color: colors.bodyStrong, transition: 'color 0.2s' }}>
+                <Typography variant="h4" component="h2" sx={{ mt: '30px', fontSize: { xs: 24, sm: 24, md: 24, lg: 24 }, fontWeight: 700, lineHeight: '32px', color: colors.bodyStrong, transition: 'color 0.2s' }}>
                   {project.title}
                 </Typography>
-                <Typography sx={{ mt: 1, fontSize: { xs: 16, sm: 16, md: 16, lg: 16 }, color: '#E6E6E6' }}>{project.summary}</Typography>
+                <Typography sx={{ mt: 1, fontSize: { xs: 18, sm: 18, md: 18, lg: 18 }, color: '#E6E6E6' }}>{project.summary}</Typography>
               </Link>
             </Grid>
           ))}
@@ -153,14 +155,14 @@ const Home = () => {
           }}
         >
           <Box sx={{ maxWidth: 610 }}>
-            <Typography variant="h3" component="h2">
+            <Typography variant="h3" component="h2" sx={{ fontSize: { xs: 36, sm: 48, md: 48, lg: 48 } }}>
               About me
             </Typography>
-            <Typography sx={{ mt: '12px', fontSize: { xs: 16, sm: 16, md: 16, lg: 16 }, color: '#E6E6E6' }}>
+            <Typography sx={{ mt: '12px', fontSize: { xs: 20, sm: 20, md: 20, lg: 20 }, color: '#E6E6E6' }}>
               Hi, I’m Rui Shi, a product designer passionate about design, AI, and turning new ideas into meaningful
               experiences.
             </Typography>
-            <Typography sx={{ mt: '28px', fontSize: { xs: 16, sm: 16, md: 16, lg: 16 }, color: '#E6E6E6' }}>
+            <Typography sx={{ mt: '28px', fontSize: { xs: 20, sm: 20, md: 20, lg: 20 }, color: '#E6E6E6' }}>
               Outside of work, you’ll find me volunteering at animal shelters and Asian community events, exploring DIY
               projects, or out hiking and mushroom foraging. 🍄 I also have a cat, her name is Kiki. 🐱
             </Typography>
