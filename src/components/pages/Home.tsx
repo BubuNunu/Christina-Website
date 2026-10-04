@@ -144,7 +144,7 @@ const Home = () => {
       </PageContainer>
 
       {/* About me */}
-      <Box component="section" sx={{ mt: '60px', bgcolor: '#222222', py: '60px' }}>
+      <Box component="section" sx={{ mt: '60px', bgcolor: '#000000', pt: '0px', pb: '60px' }}>
         <PageContainer>
           <Box
             sx={{
@@ -173,15 +173,13 @@ const Home = () => {
             </Box>
             <Box
               component="img"
-              src={asset('images/home/about-photo.webp')}
+              src={asset('images/home/about-photo.png')}
               alt="Rui holding her cat Kiki"
               loading="lazy"
               sx={{
                 width: { xs: '70%', sm: 316 },
                 maxWidth: 316,
-                aspectRatio: '316 / 352',
-                objectFit: 'cover',
-                borderRadius: '319px 319px 0 0',
+                height: 'auto',
                 display: 'block',
                 flexShrink: 0,
               }}
@@ -194,3 +192,4 @@ const Home = () => {
 };
 
 export default Home;
+
