@@ -118,7 +118,7 @@ const experiences = [
       'Served as founding designer, building 0→1 SaaS products and 50+ digital experiences from the ground up, driving 120% growth in qualified leads.',
   },
   {
-    dates: '2018 - 2020',
+    dates: '2016 - 2018',
     company: 'ASU',
     description:
       'Designed interactive learning and immersive 3D experiences, collaborating across disciplines to engage thousands of students and 2K+ exhibition visitors.',
