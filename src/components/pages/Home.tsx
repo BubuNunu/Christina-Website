@@ -177,9 +177,10 @@ const Home = () => {
               alt="Rui holding her cat Kiki"
               loading="lazy"
               sx={{
-                width: { xs: '70%', sm: 316 },
-                maxWidth: 316,
+                width: { xs: '70%', sm: 288 },
+                maxWidth: 288,
                 height: 'auto',
+                alignSelf: { xs: 'flex-start', md: 'flex-end' },
                 display: 'block',
                 flexShrink: 0,
               }}
@@ -192,3 +193,4 @@ const Home = () => {
 };
 
 export default Home;
+
