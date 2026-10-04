@@ -144,7 +144,7 @@ const Home = () => {
       </PageContainer>
 
       {/* About me */}
-      <Box component="section" sx={{ bgcolor: '#222222', py: '60px' }}>
+      <Box component="section" sx={{ mt: '60px', bgcolor: '#222222', py: '60px' }}>
         <PageContainer>
           <Box
             sx={{
@@ -167,7 +167,7 @@ const Home = () => {
                 Outside of work, you’ll find me volunteering at animal shelters and Asian community events, exploring DIY
                 projects, or out hiking and mushroom foraging. 🍄 I also have a cat, her name is Kiki. 🐱
               </Typography>
-              <PillButton href={links.linkedIn} target="_blank" rel="noopener noreferrer" sx={{ mt: '38px', px: '18px' }}>
+              <PillButton href={links.linkedIn} target="_blank" rel="noopener noreferrer" sx={{ mt: '38px', px: '18px', fontSize: 16 }}>
                 Say Hello
               </PillButton>
             </Box>
