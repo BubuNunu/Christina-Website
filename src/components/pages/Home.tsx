@@ -144,7 +144,7 @@ const Home = () => {
       </PageContainer>
 
       {/* About me */}
-      <Box component="section" sx={{ mt: '60px', bgcolor: '#000000', pt: '0px', pb: '60px' }}>
+      <Box component="section" sx={{ mt: '60px', bgcolor: '#000000', pt: '60px', pb: '60px' }}>
         <PageContainer>
           <Box
             sx={{
@@ -192,4 +192,3 @@ const Home = () => {
 };
 
 export default Home;
-
