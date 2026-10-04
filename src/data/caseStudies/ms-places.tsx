@@ -423,7 +423,6 @@ const blocks: CaseStudyBlock[] = [
     src: img('platforms'),
     alt: 'Microsoft Places across platforms: the mobile app, the website and Microsoft 365 (Outlook calendar)',
   },
-  { kind: 'stats', items: keyStats },
 ];
 
 const msPlaces: CaseStudyContent = {
