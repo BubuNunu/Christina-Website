@@ -144,52 +144,53 @@ const Home = () => {
       </PageContainer>
 
       {/* About me */}
-      <PageContainer sx={{ pt: { xs: 10, md: '120px' }, pb: { xs: 8, md: '139px' } }}>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: { xs: 'column-reverse', md: 'row' },
-            justifyContent: 'space-between',
-            alignItems: { xs: 'flex-start', md: 'flex-start' },
-            gap: { xs: 4, md: 6 },
-          }}
-        >
-          <Box sx={{ maxWidth: 610 }}>
-            <Typography variant="h3" component="h2" sx={{ fontSize: { xs: 36, sm: 48, md: 48, lg: 48 } }}>
-              About me
-            </Typography>
-            <Typography sx={{ mt: '12px', fontSize: { xs: 20, sm: 20, md: 20, lg: 20 }, color: '#E6E6E6' }}>
-              Hi, I’m Rui Shi, a product designer passionate about design, AI, and turning new ideas into meaningful
-              experiences.
-            </Typography>
-            <Typography sx={{ mt: '28px', fontSize: { xs: 20, sm: 20, md: 20, lg: 20 }, color: '#E6E6E6' }}>
-              Outside of work, you’ll find me volunteering at animal shelters and Asian community events, exploring DIY
-              projects, or out hiking and mushroom foraging. 🍄 I also have a cat, her name is Kiki. 🐱
-            </Typography>
-            <PillButton href={links.linkedIn} target="_blank" rel="noopener noreferrer" sx={{ mt: '38px', px: '18px' }}>
-              Say Hello
-            </PillButton>
-          </Box>
+      <Box component="section" sx={{ bgcolor: '#222222', py: '60px' }}>
+        <PageContainer>
           <Box
-            component="img"
-            src={asset('images/home/about-photo.webp')}
-            alt="Rui holding her cat Kiki"
-            loading="lazy"
             sx={{
-              width: { xs: '70%', sm: 316 },
-              maxWidth: 316,
-              aspectRatio: '316 / 352',
-              objectFit: 'cover',
-              borderRadius: '319px 319px 0 0',
-              display: 'block',
-              flexShrink: 0,
+              display: 'flex',
+              flexDirection: { xs: 'column-reverse', md: 'row' },
+              justifyContent: 'space-between',
+              alignItems: { xs: 'flex-start', md: 'flex-start' },
+              gap: { xs: 4, md: 6 },
             }}
-          />
-        </Box>
-      </PageContainer>
+          >
+            <Box sx={{ maxWidth: 610 }}>
+              <Typography variant="h3" component="h2" sx={{ fontSize: { xs: 36, sm: 48, md: 48, lg: 48 } }}>
+                About me
+              </Typography>
+              <Typography sx={{ mt: '12px', fontSize: { xs: 20, sm: 20, md: 20, lg: 20 }, color: '#E6E6E6' }}>
+                Hi, I’m Rui Shi, a product designer passionate about design, AI, and turning new ideas into meaningful
+                experiences.
+              </Typography>
+              <Typography sx={{ mt: '28px', fontSize: { xs: 20, sm: 20, md: 20, lg: 20 }, color: '#E6E6E6' }}>
+                Outside of work, you’ll find me volunteering at animal shelters and Asian community events, exploring DIY
+                projects, or out hiking and mushroom foraging. 🍄 I also have a cat, her name is Kiki. 🐱
+              </Typography>
+              <PillButton href={links.linkedIn} target="_blank" rel="noopener noreferrer" sx={{ mt: '38px', px: '18px' }}>
+                Say Hello
+              </PillButton>
+            </Box>
+            <Box
+              component="img"
+              src={asset('images/home/about-photo.webp')}
+              alt="Rui holding her cat Kiki"
+              loading="lazy"
+              sx={{
+                width: { xs: '70%', sm: 316 },
+                maxWidth: 316,
+                aspectRatio: '316 / 352',
+                objectFit: 'cover',
+                borderRadius: '319px 319px 0 0',
+                display: 'block',
+                flexShrink: 0,
+              }}
+            />
+          </Box>
+        </PageContainer>
+      </Box>
     </>
   );
 };
 
 export default Home;
-
