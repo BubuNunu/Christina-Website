@@ -188,7 +188,6 @@ const Layout = () => {
             justifyContent="space-between"
             alignItems={{ xs: 'flex-start', md: 'flex-start' }}
             spacing={{ xs: 5, md: 4 }}
-            sx={{ ml: { md: '-25px' } }}
           >
             <Box sx={{ maxWidth: 665 }}>
               <Typography variant="h3" component="h2" sx={{ fontSize: { xs: 36, sm: 48, md: 48, lg: 48 }, lineHeight: 'normal' }}>
@@ -201,7 +200,7 @@ const Layout = () => {
                 <br />I am ready to connect with you!
               </Typography>
             </Box>
-            <Stack direction="row" spacing={6} sx={{ pt: { md: '28px' }, pr: { md: '35px' } }}>
+            <Stack direction="row" spacing={6} sx={{ pt: { md: '28px' } }}>
               {footerColumns.map((column) => (
                 <Stack key={column.heading} spacing={3} sx={{ minWidth: { xs: 120, md: column.heading === 'DESIGN' ? 135 : 82 } }}>
                   <Typography sx={{ fontSize: { xs: 16, sm: 16, md: 16, lg: 16 }, lineHeight: '22px', color: colors.bodyStrong }}>
@@ -236,3 +235,4 @@ const Layout = () => {
 };
 
 export default Layout;
+
