@@ -57,7 +57,7 @@ const Home = () => {
         <Typography
           sx={{
             mt: { xs: 3, md: '26px' },
-            fontSize: { xs: 28, sm: 28, md: 28, lg: 28 },
+            fontSize: { xs: 24, sm: 24, md: 24, lg: 24 },
             lineHeight: 'normal',
             fontWeight: 500,
             color: colors.bodyStrong,
@@ -192,3 +192,4 @@ const Home = () => {
 };
 
 export default Home;
+
