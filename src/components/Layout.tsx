@@ -182,12 +182,7 @@ const Layout = () => {
       </Box>
 
       <Box component="footer" id="contact" sx={{ bgcolor: '#1d1d1d' }}>
-        <PageContainer
-          sx={{
-            pt: pathname === '/' ? '60px' : '80px',
-            pb: pathname === '/' ? '60px' : { xs: 6, md: '64px' },
-          }}
-        >
+        <PageContainer sx={{ py: '60px' }}>
           <Stack
             direction={{ xs: 'column', md: 'row' }}
             justifyContent="space-between"
