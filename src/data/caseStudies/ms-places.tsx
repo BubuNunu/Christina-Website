@@ -74,7 +74,7 @@ const Donut = ({ percent }: { percent: number }) => {
 };
 
 const statValueSx = {
-  fontSize: 40,
+  fontSize: { xs: '30px', sm: '30px', md: '30px', lg: '30px' },
   fontWeight: 600,
   lineHeight: '56px',
   textAlign: 'center',
@@ -125,7 +125,7 @@ const ProblemCharts = () => (
           <Typography
             sx={{
               mt: '20px',
-              fontSize: 16,
+              fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '16px' },
               lineHeight: '22px',
               textAlign: 'center',
               color: '#ffffff',
