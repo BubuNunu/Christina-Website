@@ -37,11 +37,11 @@ const galleryItems: GalleryItem[] = [
   {
     id: 'open-meow',
     kind: 'video',
-    src: 'images/vibe-coding/open-meow.mp4',
-    poster: 'images/vibe-coding/open-meow-poster.jpg',
+    src: 'images/vibe-coding/open-meow-screen.mp4',
+    poster: 'images/vibe-coding/open-meow-screen-poster.jpg',
     alt: 'OpenMeow mobile app prototype demonstration',
-    width: 1080,
-    height: 1920,
+    width: 960,
+    height: 1852,
     frame: true,
   },
   {
@@ -121,7 +121,8 @@ const MediaCard = ({ item, reducedMotion }: { item: GalleryItem; reducedMotion: 
             aspectRatio: `${item.width} / ${item.height}`,
             objectFit: 'contain',
             mx: 'auto',
-            borderRadius: item.frame ? '20px' : 0,
+            // Match the rounded phone screen at every display size.
+            borderRadius: item.frame ? '15% / 7.78%' : 0,
           }}
         />
       ) : (
