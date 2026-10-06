@@ -70,6 +70,39 @@ const galleryItems: GalleryItem[] = [
     width: 1400,
     height: 1400,
   },
+  {
+    id: 'baby-shower-1',
+    kind: 'image',
+    src: 'images/vibe-coding/baby-shower-1.jpg',
+    alt: 'Framed baby shower invitation with a couple holding teddy bears and a floral border',
+    width: 1706,
+    height: 2048,
+  },
+  {
+    id: 'baby-shower-2',
+    kind: 'image',
+    src: 'images/vibe-coding/baby-shower-2.jpg',
+    alt: 'Framed baby shower illustration of a couple in a flower field beneath a teal sky',
+    width: 2048,
+    height: 1536,
+  },
+  {
+    id: 'mushroom',
+    kind: 'video',
+    src: 'images/vibe-coding/mushroom.mp4',
+    poster: 'images/vibe-coding/mushroom-poster.jpg',
+    alt: 'Animated mushroom house with glowing windows in a magical forest',
+    width: 1280,
+    height: 720,
+  },
+  {
+    id: 'skills-2',
+    kind: 'image',
+    src: 'images/vibe-coding/skills-2.png',
+    alt: 'Watercolor birthday cat with a pink crown, plush companions, cake, and matching stickers',
+    width: 1536,
+    height: 1024,
+  },
 ];
 
 // Mix the cards once per visit; keep their positions stable during interaction.
