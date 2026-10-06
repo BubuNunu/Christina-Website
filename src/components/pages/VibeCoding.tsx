@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Typography, useMediaQuery } from '@mui/material';
+import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import PageContainer from '../PageContainer';
 import { colors } from '@/theme';
 import { asset } from '@/utils/asset';
@@ -86,11 +86,8 @@ const MediaCard = ({ item, reducedMotion }: { item: GalleryItem; reducedMotion: 
       data-play-card={item.id}
       sx={{
         m: 0,
-        mb: '12px',
-        display: 'inline-block',
-        verticalAlign: 'top',
+        display: 'block',
         width: '100%',
-        breakInside: 'avoid',
         borderRadius: '20px',
         border: '1px solid #282828',
         overflow: 'hidden',
@@ -151,7 +148,13 @@ const MediaCard = ({ item, reducedMotion }: { item: GalleryItem; reducedMotion: 
 
 const Play = () => {
   const [items] = useState(() => shuffle(galleryItems));
+  const theme = useTheme();
+  const desktop = useMediaQuery(theme.breakpoints.up('md'));
+  const tablet = useMediaQuery(theme.breakpoints.up('sm'));
   const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
+  const columnCount = desktop ? 3 : tablet ? 2 : 1;
+  const columns = Array.from({ length: columnCount }, () => [] as GalleryItem[]);
+  items.forEach((item, index) => columns[index % columnCount].push(item));
 
   return (
     <PageContainer sx={{ pt: { xs: '40px', md: '60px' }, pb: '60px' }}>
@@ -180,10 +183,20 @@ const Play = () => {
       <Box
         component="section"
         aria-label="Play gallery"
-        sx={{ mt: { xs: '40px', md: '72px' }, columnCount: { xs: 1, sm: 2, md: 3 }, columnGap: '12px' }}
+        sx={{
+          mt: { xs: '40px', md: '72px' },
+          display: 'grid',
+          gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))`,
+          gap: '12px',
+          alignItems: 'start',
+        }}
       >
-        {items.map((item) => (
-          <MediaCard key={item.id} item={item} reducedMotion={reducedMotion} />
+        {columns.map((column, index) => (
+          <Box key={index} data-play-column={index} sx={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {column.map((item) => (
+              <MediaCard key={item.id} item={item} reducedMotion={reducedMotion} />
+            ))}
+          </Box>
         ))}
       </Box>
     </PageContainer>
