@@ -119,6 +119,33 @@ const galleryItems: GalleryItem[] = [
     width: 2048,
     height: 1536,
   },
+  {
+    id: 'burger-stack',
+    kind: 'video',
+    src: 'images/vibe-coding/burger-stack.mp4',
+    poster: 'images/vibe-coding/burger-stack-poster.jpg',
+    alt: 'Animated 3D burger with stacked ingredients floating between two hands',
+    width: 720,
+    height: 1280,
+  },
+  {
+    id: 'utopai-demo',
+    kind: 'video',
+    src: 'images/vibe-coding/utopai-demo.mp4',
+    poster: 'images/vibe-coding/utopai-poster.jpg',
+    alt: 'UTOPAI AI video creation interface prototype demonstration',
+    width: 1920,
+    height: 1110,
+  },
+  {
+    id: 'cat-fishing',
+    kind: 'video',
+    src: 'images/vibe-coding/cat-fishing.mp4',
+    poster: 'images/vibe-coding/cat-fishing-poster.jpg',
+    alt: 'Animated orange kitten fishing from a small boat on a miniature lake',
+    width: 1280,
+    height: 720,
+  },
 ];
 
 // Mix the cards once per visit; keep their positions stable during interaction.
