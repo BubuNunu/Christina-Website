@@ -1,4 +1,4 @@
-# Sherry UX work website
+# Christina website
 
 UX portfolio website, built with Vite + React + TypeScript + MUI (same setup as GoogleFileWebsite).
 
