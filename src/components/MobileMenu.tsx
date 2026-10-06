@@ -99,7 +99,7 @@ const MobileMenu = ({ headerHeight }: { headerHeight: number }) => {
               </Link>
             ))}
           </Box>
-          <Link component={RouterLink} to="/vibe-coding" aria-current={current('/vibe-coding')} sx={itemSx}>
+          <Link component={RouterLink} to="/play" aria-current={current('/play')} sx={itemSx}>
             Play
           </Link>
           <Link component={RouterLink} to="/about" aria-current={current('/about')} sx={itemSx}>
