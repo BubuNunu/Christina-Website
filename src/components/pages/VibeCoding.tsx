@@ -103,6 +103,22 @@ const galleryItems: GalleryItem[] = [
     width: 1536,
     height: 1024,
   },
+  {
+    id: 'wm-truck',
+    kind: 'image',
+    src: 'images/vibe-coding/wm-truck.jpg',
+    alt: '3D rendering of a green and white WM collection truck',
+    width: 1170,
+    height: 680,
+  },
+  {
+    id: 'luna-city',
+    kind: 'image',
+    src: 'images/vibe-coding/luna-city.jpg',
+    alt: 'Designer presenting Luna City concept sketches and design explorations',
+    width: 2048,
+    height: 1536,
+  },
 ];
 
 // Mix the cards once per visit; keep their positions stable during interaction.
