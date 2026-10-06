@@ -11,7 +11,7 @@ import { asset } from '@/utils/asset';
 import { links } from '@/data/links';
 
 const navLinks = [
-  { label: 'Play', to: '/vibe-coding' },
+  { label: 'Play', to: '/play' },
   { label: 'About', to: '/about' },
   { label: 'Resume', href: links.resume },
 ];
@@ -235,4 +235,3 @@ const Layout = () => {
 };
 
 export default Layout;
-
