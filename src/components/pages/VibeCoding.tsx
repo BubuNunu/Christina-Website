@@ -13,56 +13,62 @@ interface GalleryItem {
   height: number;
   poster?: string;
   frame?: boolean;
-  crop?: { x: number; y: number; width: number; height: number };
 }
 
 // Add each new image, GIF, or video here. Dimensions reserve its space while it loads.
-// The crop rectangles show individual artworks from the existing skills collage.
 const galleryItems: GalleryItem[] = [
   {
-    id: 'cozy-corner',
+    id: 'cat',
     kind: 'image',
-    src: 'images/vibe-coding/skills-collage.webp',
-    alt: 'A sunny, cozy living room with a grey cat and matching illustrated stickers',
-    width: 984,
-    height: 954,
-    crop: { x: 0, y: 0, width: 984, height: 652 },
+    src: 'images/vibe-coding/cat.png',
+    alt: 'A glowing pastel cat with iridescent pink, purple, and blue colors',
+    width: 1448,
+    height: 1086,
+  },
+  {
+    id: 'logo-design',
+    kind: 'gif',
+    src: 'images/vibe-coding/logo-design.gif',
+    poster: 'images/vibe-coding/logo-design-poster.png',
+    alt: 'Animated Ameriduo logo and brand design on a tablet',
+    width: 508,
+    height: 335,
   },
   {
     id: 'open-meow',
-    kind: 'image',
-    src: 'images/vibe-coding/open-meow-1.webp',
-    alt: 'Open Meow AI phone prototype for recording and analyzing a cat’s meow',
-    width: 506,
-    height: 942,
+    kind: 'video',
+    src: 'images/vibe-coding/open-meow.mp4',
+    poster: 'images/vibe-coding/open-meow-poster.jpg',
+    alt: 'OpenMeow mobile app prototype demonstration',
+    width: 1080,
+    height: 1920,
     frame: true,
   },
   {
-    id: 'felt-fruit',
-    kind: 'image',
-    src: 'images/vibe-coding/skills-collage.webp',
-    alt: 'Wool-felt grapefruit, apple, and kiwi in soft pastel colors',
-    width: 984,
-    height: 954,
-    crop: { x: 644, y: 668, width: 340, height: 286 },
+    id: 'rushable',
+    kind: 'video',
+    src: 'images/vibe-coding/rushable.mp4',
+    poster: 'images/vibe-coding/rushable-poster.jpg',
+    alt: 'Rushable restaurant platform website demonstration',
+    width: 1440,
+    height: 720,
   },
   {
-    id: 'wave-architecture',
-    kind: 'image',
-    src: 'images/vibe-coding/skills-collage.webp',
-    alt: 'A flowing modern building illustrated in cream and pale blue',
-    width: 984,
-    height: 954,
-    crop: { x: 0, y: 668, width: 430, height: 286 },
+    id: 'school-bus-app',
+    kind: 'video',
+    src: 'images/vibe-coding/school-bus-app.mp4',
+    poster: 'images/vibe-coding/school-bus-app-poster.jpg',
+    alt: 'Animated school bus mobile app interface designs',
+    width: 854,
+    height: 428,
   },
   {
-    id: 'coral-architecture',
+    id: 'sketch',
     kind: 'image',
-    src: 'images/vibe-coding/skills-collage.webp',
-    alt: 'Coral-colored geometric architecture against a blue sky',
-    width: 984,
-    height: 954,
-    crop: { x: 442, y: 668, width: 188, height: 286 },
+    src: 'images/vibe-coding/sketch.jpg',
+    alt: 'Colorful illustration of a creative team launching a rocket',
+    width: 1400,
+    height: 1400,
   },
 ];
 
@@ -77,7 +83,6 @@ const shuffle = (items: GalleryItem[]) => {
 };
 
 const MediaCard = ({ item, reducedMotion }: { item: GalleryItem; reducedMotion: boolean }) => {
-  const crop = item.crop;
   const src = reducedMotion && item.kind === 'gif' && item.poster ? item.poster : item.src;
 
   return (
@@ -89,7 +94,7 @@ const MediaCard = ({ item, reducedMotion }: { item: GalleryItem; reducedMotion: 
         display: 'block',
         width: '100%',
         borderRadius: '20px',
-        border: '1px solid #282828',
+        border: '2px solid #282828',
         overflow: 'hidden',
         bgcolor: item.frame ? '#222222' : '#111111',
         p: item.frame ? '24px' : 0,
@@ -109,28 +114,16 @@ const MediaCard = ({ item, reducedMotion }: { item: GalleryItem; reducedMotion: 
           playsInline
           controls
           preload="metadata"
-          sx={{ display: 'block', width: '100%', height: 'auto', aspectRatio: `${item.width} / ${item.height}` }}
+          sx={{
+            display: 'block',
+            width: item.frame ? '78%' : '100%',
+            height: 'auto',
+            aspectRatio: `${item.width} / ${item.height}`,
+            objectFit: 'contain',
+            mx: 'auto',
+            borderRadius: item.frame ? '20px' : 0,
+          }}
         />
-      ) : crop ? (
-        <Box sx={{ position: 'relative', width: '100%', aspectRatio: `${crop.width} / ${crop.height}` }}>
-          <Box
-            component="img"
-            src={asset(src)}
-            alt={item.alt}
-            loading="lazy"
-            width={item.width}
-            height={item.height}
-            sx={{
-              position: 'absolute',
-              display: 'block',
-              width: `${(item.width / crop.width) * 100}%`,
-              height: `${(item.height / crop.height) * 100}%`,
-              maxWidth: 'none',
-              left: `${(-crop.x / crop.width) * 100}%`,
-              top: `${(-crop.y / crop.height) * 100}%`,
-            }}
-          />
-        </Box>
       ) : (
         <Box
           component="img"
