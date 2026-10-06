@@ -1,11 +1,11 @@
 import { ThemeProvider, CssBaseline } from '@mui/material';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import theme from './theme';
 import Layout from './components/Layout';
 import Home from './components/pages/Home';
 import Project from './components/pages/Project';
 import About from './components/pages/About';
-import VibeCoding from './components/pages/VibeCoding';
+import Play from './components/pages/VibeCoding';
 import NotFound from './components/pages/NotFound';
 import PasswordGate from './components/PasswordGate';
 
@@ -20,7 +20,8 @@ const App = () => {
               <Route index element={<Home />} />
               <Route path="projects/:slug" element={<Project />} />
               <Route path="about" element={<About />} />
-              <Route path="vibe-coding" element={<VibeCoding />} />
+              <Route path="play" element={<Play />} />
+              <Route path="vibe-coding" element={<Navigate to="/play" replace />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
