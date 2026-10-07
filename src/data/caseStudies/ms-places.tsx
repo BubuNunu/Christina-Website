@@ -431,6 +431,10 @@ const msPlaces: CaseStudyContent = {
     src: img('hero'),
     alt: 'Outlook calendar with the Microsoft Places card showing who is in the office and suggesting a day to collaborate in person',
   },
+  heroVideo: {
+    youtubeId: 'lOJn8drYZyc',
+    title: 'Microsoft Places overview video',
+  },
   blocks,
 };
 
