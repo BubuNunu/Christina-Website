@@ -6,6 +6,9 @@ export interface Project {
   cardSummary?: string;
   // Card picture on Home, under public/
   image: string;
+  // Optional silent looping clip shown immediately on the homepage card.
+  // Path under public/ without extension; a .webm and an .mp4 must both exist.
+  cardVideo?: string;
   // Optional looping clip that plays over the picture on hover: path under public/
   // without extension; a .webm and an .mp4 must both exist
   hoverVideo?: string;
@@ -21,6 +24,7 @@ export const projects: Project[] = [
     cardSummary:
       'Led 0→1 mobile design across 5 designers and 9 partner teams, scaling Places to 5.7M MAU and 1,500+ enterprise customers.',
     image: 'images/home/ms-places-recommended-day.png',
+    cardVideo: 'images/home/ms-places-hover',
   },
   {
     slug: 'm365-ess-agent',
