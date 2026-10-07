@@ -20,8 +20,7 @@ export const projects: Project[] = [
       'Led 0→1 mobile design across 5 designers and 9 partner teams, scaling Microsoft Places to 5.7M MAU and 1,500+ enterprise customers within 3 months of launch.',
     cardSummary:
       'Led 0→1 mobile design across 5 designers and 9 partner teams, scaling Places to 5.7M MAU and 1,500+ enterprise customers.',
-    image: 'images/home/ms-places.webp',
-    hoverVideo: 'images/home/ms-places-hover',
+    image: 'images/home/ms-places-recommended-day.png',
   },
   {
     slug: 'm365-ess-agent',
