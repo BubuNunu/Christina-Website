@@ -11,10 +11,10 @@ import { keepMuted } from '@/utils/video';
 
 // Cards with a hover clip play it while hovered/focused and rewind when left.
 const playHoverVideo = (event: SyntheticEvent) => {
-  void event.currentTarget.querySelector('video')?.play().catch(() => undefined);
+  void event.currentTarget.querySelector('video[data-hover-video]')?.play().catch(() => undefined);
 };
 const stopHoverVideo = (event: SyntheticEvent) => {
-  const video = event.currentTarget.querySelector('video');
+  const video = event.currentTarget.querySelector('video[data-hover-video]');
   if (video) {
     video.pause();
     video.currentTime = 0;
@@ -108,6 +108,32 @@ const Home = () => {
                       transition: 'transform 0.3s ease',
                     }}
                   />
+                  {project.cardVideo && (
+                    <Box
+                      component="video"
+                      ref={keepMuted}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="auto"
+                      poster={asset(project.image)}
+                      data-autoplay-card-video
+                      aria-hidden
+                      sx={{
+                        position: 'absolute',
+                        inset: 0,
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        display: 'block',
+                        transition: 'transform 0.3s ease',
+                      }}
+                    >
+                      <source src={asset(`${project.cardVideo}.webm`)} type="video/webm" />
+                      <source src={asset(`${project.cardVideo}.mp4`)} type="video/mp4" />
+                    </Box>
+                  )}
                   {project.hoverVideo && (
                     <Box
                       component="video"
