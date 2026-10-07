@@ -11,10 +11,10 @@ import { keepMuted } from '@/utils/video';
 
 // Cards with a hover clip play it while hovered/focused and rewind when left.
 const playHoverVideo = (event: SyntheticEvent) => {
-  void event.currentTarget.querySelector('video[data-hover-video]')?.play().catch(() => undefined);
+  void event.currentTarget.querySelector<HTMLVideoElement>('video[data-hover-video]')?.play().catch(() => undefined);
 };
 const stopHoverVideo = (event: SyntheticEvent) => {
-  const video = event.currentTarget.querySelector('video[data-hover-video]');
+  const video = event.currentTarget.querySelector<HTMLVideoElement>('video[data-hover-video]');
   if (video) {
     video.pause();
     video.currentTime = 0;
