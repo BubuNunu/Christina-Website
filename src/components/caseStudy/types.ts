@@ -24,5 +24,6 @@ export type CaseStudyBlock =
 export interface CaseStudyContent {
   tags: string[];
   hero: Picture;
+  heroVideo?: { youtubeId: string; title: string };
   blocks: CaseStudyBlock[];
 }
