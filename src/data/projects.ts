@@ -9,6 +9,9 @@ export interface Project {
   // Optional silent looping clip shown immediately on the homepage card.
   // Path under public/ without extension; a .webm and an .mp4 must both exist.
   cardVideo?: string;
+  // Optional silent looping cover shared by Home and the case-study hero.
+  // Path under public/ without extension; .webm and .mp4 variants must exist.
+  coverVideo?: string;
   // Optional looping clip that plays over the picture on hover: path under public/
   // without extension; a .webm and an .mp4 must both exist
   hoverVideo?: string;
@@ -33,7 +36,8 @@ export const projects: Project[] = [
       'Led the end-to-end design of an Employee Self-Service agent in Microsoft 365 Copilot, turning AI vision into scalable workplace experiences for enterprise employees.',
     cardSummary:
       'Led end-to-end design of an AI employee self-service agent, turning early vision into scalable workplace experiences in Microsoft 365 Copilot.',
-    image: 'images/home/m365-ess-agent.webp',
+    image: 'images/m365-ess-agent/m365-ess-cover-poster.webp',
+    coverVideo: 'images/m365-ess-agent/m365-ess-cover',
   },
   {
     slug: 'ms-facility',
@@ -75,3 +79,4 @@ export const projects: Project[] = [
 
 export const getProject = (slug: string | undefined) =>
   projects.find((project) => project.slug === slug);
+
