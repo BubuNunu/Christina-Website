@@ -108,7 +108,7 @@ const Home = () => {
                       transition: 'transform 0.3s ease',
                     }}
                   />
-                  {project.cardVideo && (
+                  {(project.cardVideo || project.coverVideo) && (
                     <Box
                       component="video"
                       ref={keepMuted}
@@ -130,8 +130,8 @@ const Home = () => {
                         transition: 'transform 0.3s ease',
                       }}
                     >
-                      <source src={asset(`${project.cardVideo}.webm`)} type="video/webm" />
-                      <source src={asset(`${project.cardVideo}.mp4`)} type="video/mp4" />
+                      <source src={asset(`${project.cardVideo ?? project.coverVideo}.webm`)} type="video/webm" />
+                      <source src={asset(`${project.cardVideo ?? project.coverVideo}.mp4`)} type="video/mp4" />
                     </Box>
                   )}
                   {project.hoverVideo && (
@@ -219,4 +219,5 @@ const Home = () => {
 };
 
 export default Home;
+
 
