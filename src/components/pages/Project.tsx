@@ -5,6 +5,8 @@ import NotFound from './NotFound';
 import { CaseStudyBlockView, CaseStudyHeader, FigureImage } from '../caseStudy/CaseStudyBlocks';
 import { getProject } from '@/data/projects';
 import { caseStudies } from '@/data/caseStudies';
+import { asset } from '@/utils/asset';
+import { keepMuted } from '@/utils/video';
 
 const Project = () => {
   const { slug } = useParams();
@@ -41,6 +43,23 @@ const Project = () => {
               sx={{ position: 'absolute', inset: 0, display: 'block', width: '100%', height: '100%', border: 0 }}
             />
           </Box>
+        ) : project.coverVideo ? (
+          <Box
+            component="video"
+            ref={keepMuted}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster={asset(project.image)}
+            aria-label={content.hero.alt || project.title}
+            data-autoplay-cover-video
+            sx={{ display: 'block', width: '100%', height: 'auto', aspectRatio: '1228 / 696', borderRadius: '24px' }}
+          >
+            <source src={asset(`${project.coverVideo}.webm`)} type="video/webm" />
+            <source src={asset(`${project.coverVideo}.mp4`)} type="video/mp4" />
+          </Box>
         ) : (
           <FigureImage src={content.hero.src} alt={content.hero.alt || project.title} radius={24} />
         )}
@@ -53,3 +72,4 @@ const Project = () => {
 };
 
 export default Project;
+
