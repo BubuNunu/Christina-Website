@@ -145,6 +145,7 @@ const keyFlowVideos = [
   { name: 'onboarding', label: 'Onboarding', x: 369, y: 221, width: 448, height: 972 },
   { name: 'homepage', label: 'Homepage', x: 1648, y: 218, width: 450, height: 976 },
   { name: 'work-plan', label: 'Work plan', x: 368, y: 1576, width: 450, height: 974 },
+  { name: 'collaborators', label: 'Collaborators', x: 1648, y: 1576, width: 450, height: 978 },
 ];
 
 const KeyFlows = () => (
