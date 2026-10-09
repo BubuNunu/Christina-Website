@@ -141,6 +141,51 @@ const ProblemCharts = () => (
 
 const img = (name: string) => `images/ms-places/${name}.webp`;
 
+const keyFlowVideos = [
+  { name: 'onboarding', label: 'Onboarding', x: 369, y: 221, width: 448, height: 972 },
+  { name: 'homepage', label: 'Homepage', x: 1648, y: 218, width: 450, height: 976 },
+  { name: 'work-plan', label: 'Work plan', x: 368, y: 1576, width: 450, height: 974 },
+];
+
+const KeyFlows = () => (
+  <PageContainer sx={{ py: { xs: 2, md: 3 } }}>
+    <Box sx={{ position: 'relative', aspectRatio: '2560 / 2880' }}>
+      <FigureImage
+        src={img('key-flows')}
+        alt="Four key mobile flows: 01 Onboarding, 02 Homepage, 03 Work plan, 04 Collaborators"
+      />
+      {keyFlowVideos.map((flow) => (
+        <Box
+          key={flow.name}
+          component="video"
+          ref={keepMuted}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster={asset(`images/ms-places/${flow.name}-flow-poster.webp`)}
+          aria-label={`MS Places ${flow.label} walkthrough`}
+          data-places-flow-video={flow.name}
+          sx={{
+            position: 'absolute',
+            left: `${(flow.x / 2560) * 100}%`,
+            top: `${(flow.y / 2880) * 100}%`,
+            width: `${(flow.width / 2560) * 100}%`,
+            height: `${(flow.height / 2880) * 100}%`,
+            objectFit: 'fill',
+            borderRadius: '13.4% / 6.2%',
+            display: 'block',
+          }}
+        >
+          <source src={asset(`images/ms-places/${flow.name}-flow.webm`)} type="video/webm" />
+          <source src={asset(`images/ms-places/${flow.name}-flow.mp4`)} type="video/mp4" />
+        </Box>
+      ))}
+    </Box>
+  </PageContainer>
+);
+
 const blocks: CaseStudyBlock[] = [
   {
     kind: 'section',
@@ -301,9 +346,8 @@ const blocks: CaseStudyBlock[] = [
     ),
   },
   {
-    kind: 'figure',
-    src: img('key-flows'),
-    alt: 'Four key mobile flows: 01 Onboarding (choosing in-person days), 02 Homepage, 03 Work plan, 04 Collaborators',
+    kind: 'custom',
+    content: <KeyFlows />,
   },
   {
     kind: 'section',
