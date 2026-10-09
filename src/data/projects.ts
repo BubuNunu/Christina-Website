@@ -36,8 +36,8 @@ export const projects: Project[] = [
       'Led the end-to-end design of an Employee Self-Service agent in Microsoft 365 Copilot, turning AI vision into scalable workplace experiences for enterprise employees.',
     cardSummary:
       'Led end-to-end design of an AI employee self-service agent, turning early vision into scalable workplace experiences in Microsoft 365 Copilot.',
-    image: 'images/m365-ess-agent/m365-ess-cover-poster.webp',
-    coverVideo: 'images/m365-ess-agent/m365-ess-cover',
+    image: 'images/m365-ess-agent/m365-ess-chat-cover-poster.webp',
+    coverVideo: 'images/m365-ess-agent/m365-ess-chat-cover',
   },
   {
     slug: 'ms-facility',
@@ -79,4 +79,5 @@ export const projects: Project[] = [
 
 export const getProject = (slug: string | undefined) =>
   projects.find((project) => project.slug === slug);
+
 
