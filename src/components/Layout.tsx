@@ -29,7 +29,7 @@ const footerColumns = [
     heading: 'CONTACT',
     items: [
       { label: 'Email', href: links.email },
-      { label: 'Medium', href: links.medium },
+      { label: 'Dribbble', href: 'https://dribbble.com/ruishidesign' },
       { label: 'LinkedIn', href: links.linkedIn },
     ],
   },
