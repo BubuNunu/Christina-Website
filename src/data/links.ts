@@ -6,6 +6,6 @@ export const links = {
   uxDesign: 'https://ruishidesign.com/',
   productDesign: 'https://rshi11.wixsite.com/rshi11',
   branding: 'https://ruishidesign.webflow.io/',
-  email: '',
+  email: 'mailto:ruishidesign@gmail.com',
   medium: '',
 };
